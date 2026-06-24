@@ -58,6 +58,7 @@ const DEFAULT_HERO_MOCKUP = (
     alt="Launch UI app screenshot"
     width={1248}
     height={765}
+    loading="eager"
     className="w-full"
   />
 );
