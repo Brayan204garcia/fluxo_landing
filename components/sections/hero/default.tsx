@@ -4,7 +4,6 @@ import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
 import { LinkButton, type LinkButtonProps } from "../../ui/link-button";
-import { AIChatMockup } from "../../ui/ai-chat-mockup";
 import { Section } from "../../ui/section";
 
 interface HeroButtonProps extends Omit<LinkButtonProps, "children"> {
@@ -14,7 +13,6 @@ interface HeroButtonProps extends Omit<LinkButtonProps, "children"> {
 interface HeroProps {
   title?: string;
   description?: string;
-  mockup?: ReactNode | false;
   badge?: ReactNode | false;
   buttons?: HeroButtonProps[] | false;
   className?: string;
@@ -33,7 +31,7 @@ const DEFAULT_HERO_BUTTONS: HeroButtonProps[] = [
   },
 ];
 
-const DEFAULT_HERO_MOCKUP = <AIChatMockup />;
+
 
 const DEFAULT_HERO_BADGE = (
   <div className="animate-appear inline-flex items-center gap-2 rounded-full border border-brand/30 bg-brand/10 px-3.5 py-1 text-xs font-semibold text-brand backdrop-blur-xs">
@@ -48,7 +46,6 @@ const DEFAULT_HERO_BADGE = (
 export default function Hero({
   title = "Todo lo que tu negocio necesita para dejar de operar a mano",
   description = "Desarrollo de software a medida, automatización con Inteligencia Artificial e integraciones para empresas en Barrancabermeja y Santander.",
-  mockup = DEFAULT_HERO_MOCKUP,
   badge = DEFAULT_HERO_BADGE,
   buttons = DEFAULT_HERO_BUTTONS,
   className,
@@ -86,11 +83,7 @@ export default function Hero({
               ))}
             </div>
           )}
-          {mockup !== false && (
-            <div className="relative w-full pt-6 sm:pt-8">
-              {mockup}
-            </div>
-          )}
+
         </div>
       </div>
     </Section>
