@@ -85,6 +85,7 @@ export default function Navbar({
                   key={`${action.href}-${action.text}`}
                   variant={action.variant || "default"}
                   asChild
+                  className="hidden md:flex"
                 >
                   <a href={action.href}>
                     {action.icon}
@@ -107,9 +108,9 @@ export default function Navbar({
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="shrink-0 md:hidden"
+                  className="shrink-0 md:hidden h-11 w-11"
                 >
-                  <Menu className="size-5" />
+                  <Menu className="size-7" />
                   <span className="sr-only">Toggle navigation menu</span>
                 </Button>
               </SheetTrigger>
