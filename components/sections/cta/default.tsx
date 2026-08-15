@@ -17,14 +17,19 @@ interface CTAProps {
 
 const DEFAULT_CTA_BUTTONS: CTAButtonProps[] = [
   {
-    href: siteConfig.getStartedUrl,
-    text: "Get Started",
+    href: "#contacto",
+    text: "Hablemos de tu proyecto",
     variant: "default",
+  },
+  {
+    href: siteConfig.links.whatsapp,
+    text: "Contactar por WhatsApp",
+    variant: "outline",
   },
 ];
 
 export default function CTA({
-  title = "Start building",
+  title = "¿Listo para mejorar tu próximo proceso?",
   buttons = DEFAULT_CTA_BUTTONS,
   className,
 }: CTAProps) {
@@ -35,7 +40,7 @@ export default function CTA({
           {title}
         </h2>
         {buttons !== false && buttons.length > 0 && (
-          <div className="flex justify-center gap-4">
+          <div className="flex flex-col sm:flex-row w-full sm:w-auto items-stretch sm:items-center justify-center gap-3.5 sm:gap-4 px-4 sm:px-0">
             {buttons.map((button) => (
               <LinkButton
                 key={`${button.href}-${button.text}`}
@@ -44,6 +49,7 @@ export default function CTA({
                 href={button.href}
                 icon={button.icon}
                 iconRight={button.iconRight}
+                className="w-full sm:w-auto justify-center text-center font-semibold text-base py-3 sm:py-2.5 px-6 shrink-0"
               >
                 {button.text}
               </LinkButton>

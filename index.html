@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Plataforma interactiva de capacitación en ciberseguridad y prevención de phishing para IPS de salud y radiología en Colombia.">
+  <title>Capacitación Anti-Phishing | IPS Radiología & Imágenes Diagnósticas</title>
+  <style>
+    /* ==========================================================================
+       1. VARIABLES Y DISEÑO BASE (DESIGN SYSTEM)
+       ========================================================================== */
+    :root {
+      --primary: #0f172a;
+      --primary-light: #1e293b;
+      --accent: #0d9488;
+      --accent-hover: #0f766e;
+      --accent-light: #ccfbf1;
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --border: #e2e8f0;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --danger: #e11d48;
+      --danger-bg: #fff1f2;
+      --warning: #d97706;
+      --warning-bg: #fef3c7;
+      --success: #059669;
+      --success-bg: #ecfdf5;
+      --radius: 12px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+      --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font);
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ==========================================================================
+       2. ESTRUCTURA Y NAVEGACIÓN
+       ========================================================================== */
+    header {
+      background: var(--primary);
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-md);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--accent);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+    }
+
+    .brand-text h1 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .brand-text p {
+      font-size: 0.78rem;
+      color: #94a3b8;
+    }
+
+    .progress-bar-container {
+      flex: 1;
+      max-width: 300px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 999px;
+      height: 12px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), #14b8a6);
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+
+    .progress-text {
+      font-size: 0.75rem;
+      color: #cbd5e1;
+      margin-left: 0.5rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .nav-tabs {
+      background: #1e293b;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .nav-tabs-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      padding: 0 1rem;
+    }
+
+    .nav-tab {
+      padding: 0.85rem 1.2rem;
+      background: none;
+      border: none;
+      color: #94a3b8;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-tab:hover {
+      color: #f1f5f9;
+    }
+
+    .nav-tab.active {
+      color: white;
+      border-bottom-color: var(--accent);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .nav-tab .tab-badge {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 0.1rem 0.4rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+    }
+
+    .nav-tab.completed .tab-badge {
+      background: var(--success);
+      color: white;
+    }
+
+    /* ==========================================================================
+       3. VISTAS Y CONTENEDOR PRINCIPAL
+       ========================================================================== */
+    main {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      min-height: calc(100vh - 250px);
+    }
+
+    .module-card {
+      display: none;
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+      padding: 2.5rem;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .module-card.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      margin-bottom: 2rem;
+    }
+
+    /* ==========================================================================
+       4. BOTONES Y COMPONENTES
+       ========================================================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-secondary {
+      background: #f1f5f9;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: #e2e8f0;
+    }
+
+    .btn-lg {
+      padding: 0.9rem 2rem;
+      font-size: 1.05rem;
+    }
+
+    /* ==========================================================================
+       5. MÓDULO 1: INICIO (HOME)
+       ========================================================================== */
+    .hero-banner {
+      background: linear-gradient(135deg, var(--primary) 0%, #1e293b 100%);
+      color: white;
+      padding: 3rem 2.5rem;
+      border-radius: var(--radius);
+      margin-bottom: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-banner::after {
+      content: '';
+      position: absolute;
+      right: -50px;
+      bottom: -50px;
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(13, 148, 136, 0.2) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-banner h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      line-height: 1.25;
+    }
+
+    .hero-banner p {
+      color: #cbd5e1;
+      font-size: 1.05rem;
+      max-width: 800px;
+      margin-bottom: 1.75rem;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .info-card {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      transition: transform 0.2s;
+    }
+
+    .info-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .info-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .info-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    .info-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .banner-callout {
+      background: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      padding: 1.25rem;
+      border-radius: 6px;
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+      color: #1e40af;
+    }
+
+    /* ==========================================================================
+       6. MÓDULO 2: RÉPLICA DE CORREO INTERACTIVO (HOTSPOTS)
+       ========================================================================== */
+    .detector-layout {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 2rem;
+    }
+
+    @media (max-width: 992px) {
+      .detector-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .email-container {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+
+    .email-header-bar {
+      background: #f1f5f9;
+      padding: 0.75rem 1.25rem;
+      border-bottom: 1px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .dot-red { background: #ef4444; }
+    .dot-yellow { background: #f59e0b; }
+    .dot-green { background: #10b981; }
+
+    .email-content {
+      padding: 1.75rem;
+    }
+
+    .email-field {
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px dashed #e2e8f0;
+      position: relative;
+    }
+
+    .email-field label {
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      display: inline-block;
+      width: 80px;
+    }
+
+    .hotspot {
+      position: relative;
+      cursor: pointer;
+      border-radius: 4px;
+      padding: 0.2rem 0.4rem;
+      margin: -0.2rem -0.4rem;
+      transition: all 0.2s;
+      background: rgba(225, 29, 72, 0.08);
+      border: 1.5px dashed var(--danger);
+      display: inline-block;
+    }
+
+    .hotspot:hover {
+      background: rgba(225, 29, 72, 0.18);
+      transform: scale(1.01);
+    }
+
+    .hotspot.found {
+      background: var(--success-bg);
+      border: 1.5px solid var(--success);
+      color: #065f46;
+    }
+
+    .hotspot-tag {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: var(--danger);
+      color: white;
+      font-size: 0.65rem;
+      font-weight: bold;
+      padding: 0.1rem 0.4rem;
+      border-radius: 999px;
+    }
+
+    .hotspot.found .hotspot-tag {
+      background: var(--success);
+    }
+
+    .email-body-text {
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+      color: #334155;
+      line-height: 1.7;
+    }
+
+    .attachment-box {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 1rem;
+      margin: 1.25rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .email-footer-legal {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid #e2e8f0;
+      font-size: 0.78rem;
+      color: #94a3b8;
+    }
+
+    .sidebar-feedback {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      position: sticky;
+      top: 100px;
+      height: fit-content;
+    }
+
+    .findings-counter {
+      background: var(--primary);
+      color: white;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .feedback-detail-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem;
+      min-height: 200px;
+    }
+
+    .feedback-detail-card.active {
+      border-left: 4px solid var(--danger);
+    }
+
+    /* ==========================================================================
+       7. MÓDULO 3: QUIZ DE ESCENARIOS
+       ========================================================================== */
+    .quiz-card {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .quiz-progress-text {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+
+    .quiz-question-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .quiz-email-preview {
+      background: white;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .quiz-option-btn {
+      background: white;
+      border: 1.5px solid var(--border);
+      padding: 1rem 1.25rem;
+      border-radius: 8px;
+      text-align: left;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .quiz-option-btn:hover {
+      border-color: var(--accent);
+      background: #f0fdf4;
+    }
+
+    .quiz-option-btn.selected-correct {
+      background: var(--success-bg);
+      border-color: var(--success);
+      color: #065f46;
+      font-weight: 700;
+    }
+
+    .quiz-option-btn.selected-incorrect {
+      background: var(--danger-bg);
+      border-color: var(--danger);
+      color: #9f1239;
+      font-weight: 700;
+    }
+
+    .quiz-explanation {
+      margin-top: 1.5rem;
+      padding: 1.25rem;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      display: none;
+    }
+
+    .quiz-explanation.show {
+      display: block;
+      animation: fadeIn 0.3s;
+    }
+
+    .quiz-explanation.correct {
+      background: var(--success-bg);
+      border-left: 4px solid var(--success);
+      color: #065f46;
+    }
+
+    .quiz-explanation.incorrect {
+      background: var(--danger-bg);
+      border-left: 4px solid var(--danger);
+      color: #9f1239;
+    }
+
+    /* ==========================================================================
+       8. MÓDULO 4: PROTOCOLO POST-CLIC (CHECKLIST)
+       ========================================================================== */
+    .checklist-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .checklist-item {
+      background: white;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .checklist-item:hover {
+      border-color: var(--accent);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .checklist-item.checked {
+      border-color: var(--success);
+      background: var(--success-bg);
+    }
+
+    .checkbox-custom {
+      width: 24px;
+      height: 24px;
+      border: 2px solid #cbd5e1;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+      transition: all 0.2s;
+    }
+
+    .checklist-item.checked .checkbox-custom {
+      background: var(--success);
+      border-color: var(--success);
+      color: white;
+    }
+
+    .checklist-text h4 {
+      font-size: 1.05rem;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .checklist-text p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .no-blame-banner {
+      background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+      border: 1px solid #a7f3d0;
+      border-radius: 10px;
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .no-blame-banner h3 {
+      color: #065f46;
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .no-blame-banner p {
+      color: #047857;
+      font-size: 0.9rem;
+    }
+
+    /* ==========================================================================
+       9. MÓDULO 5: PROTOCOLO DE REPORTE INTERNO
+       ========================================================================== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .contact-card h4 {
+      font-size: 1rem;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .editable-input {
+      width: 100%;
+      padding: 0.6rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.9rem;
+      color: var(--text);
+      background: #f8fafc;
+      font-family: inherit;
+    }
+
+    .editable-input:focus {
+      outline: none;
+      border-color: var(--accent);
+      background: white;
+    }
+
+    .steps-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+    .timeline-step {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .step-number {
+      width: 32px;
+      height: 32px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    /* ==========================================================================
+       10. MÓDULO 6: CERTIFICADO FINAL (HTML & PRINT CSS)
+       ========================================================================== */
+    .certificate-form {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--primary);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.95rem;
+    }
+
+    /* Certificado Imprimible Visual */
+    .certificate-frame {
+      background: white;
+      border: 12px double var(--primary);
+      border-radius: 4px;
+      padding: 3rem;
+      text-align: center;
+      position: relative;
+      box-shadow: var(--shadow-lg);
+      max-width: 850px;
+      margin: 0 auto 2rem auto;
+      background-image: radial-gradient(#f1f5f9 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+
+    .cert-header {
+      margin-bottom: 2rem;
+    }
+
+    .cert-logo {
+      font-size: 2.2rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .cert-title {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--primary);
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .cert-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .cert-body {
+      margin: 2.5rem 0;
+    }
+
+    .cert-recipient {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--primary);
+      border-bottom: 2px solid var(--accent);
+      display: inline-block;
+      padding: 0 2rem 0.3rem 2rem;
+      margin: 1rem 0;
+    }
+
+    .cert-details {
+      font-size: 1.05rem;
+      color: #334155;
+      max-width: 650px;
+      margin: 0 auto 1.5rem auto;
+      line-height: 1.7;
+    }
+
+    .cert-footer {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-end;
+      margin-top: 3.5rem;
+      padding-top: 1.5rem;
+    }
+
+    .cert-signature {
+      text-align: center;
+      width: 220px;
+    }
+
+    .cert-signature-line {
+      border-top: 1.5px solid #94a3b8;
+      margin-bottom: 0.4rem;
+    }
+
+    .cert-signature-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .cert-stamp {
+      width: 85px;
+      height: 85px;
+      border: 3px dashed var(--accent);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 0.65rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      transform: rotate(-10deg);
+    }
+
+    /* ESTILOS DE IMPRESIÓN (PDF / PRINT) */
+    @media print {
+      header, .nav-tabs, .certificate-form, .btn, .section-title, .section-subtitle, footer {
+        display: none !important;
+      }
+      body {
+        background: white;
+      }
+      main {
+        margin: 0;
+        padding: 0;
+        max-width: 100%;
+      }
+      .module-card {
+        display: block !important;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+      }
+      .module-card:not(#mod-6) {
+        display: none !important;
+      }
+      .certificate-frame {
+        box-shadow: none;
+        border: 8px double #000;
+        width: 100%;
+        max-width: 100%;
+        page-break-inside: avoid;
+      }
+    }
+
+    /* FOOTER GENERAL */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      background: white;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER INSTITUCIONAL -->
+  <header>
+    <div class="header-container">
+      <div class="brand">
+        <div class="brand-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="brand-text">
+          <h1>IPS Radiología & Salud Digital</h1>
+          <p>Plataforma de Capacitación Anti-Phishing | Colombia</p>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center;">
+        <div class="progress-bar-container">
+          <div class="progress-bar-fill" id="globalProgressBar"></div>
+        </div>
+        <span class="progress-text" id="globalProgressText">0% Completado</span>
+      </div>
+    </div>
+
+    <!-- PESTAÑAS DE NAVEGACIÓN -->
+    <nav class="nav-tabs">
+      <div class="nav-tabs-container">
+        <button class="nav-tab active" onclick="switchModule(1)">
+          <span>1. Inicio</span>
+        </button>
+        <button class="nav-tab" onclick="switchModule(2)">
+          <span>2. Identifica Señales</span>
+          <span class="tab-badge" id="badge-mod2">0/6</span>
+        </button>
+        <button class="nav-tab" onclick="switchModule(3)">
+          <span>3. Quiz Escenarios</span>
+          <span class="tab-badge" id="badge-mod3">0/10</span>
+        </button>
+        <button class="nav-tab" onclick="switchModule(4)">
+          <span>4. ¿Hiciste Clic?</span>
+          <span class="tab-badge" id="badge-mod4">0/4</span>
+        </button>
+        <button class="nav-tab" onclick="switchModule(5)">
+          <span>5. Protocolo Reporte</span>
+        </button>
+        <button class="nav-tab" onclick="switchModule(6)">
+          <span>6. Certificado</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL DE MÓDULOS -->
+  <main>
+
+    <!-- MÓDULO 1: INICIO -->
+    <div class="module-card active" id="mod-1">
+      <div class="hero-banner">
+        <h2>Protegiendo la Salud e Información de Nuestros Pacientes</h2>
+        <p>Bienvenido/a a la capacitación interactiva de prevención de phishing. Los sistemas de imágenes diagnósticas e historias clínicas de nuestra IPS requieren la atención de todo el equipo de salud.</p>
+        <button class="btn btn-primary btn-lg" onclick="switchModule(2)">
+          Comenzar Capacitación
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+
+      <div class="banner-callout">
+        <strong>💡 Cultura de Ciberseguridad Positiva:</strong> El objetivo de esta plataforma es educar y prevenir. En nuestra IPS, reportar de inmediato un correo sospechoso o una equivocación <strong>nunca conlleva penalizaciones</strong>. La velocidad de reporte es nuestra mejor defensa.
+      </div>
+
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="info-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <h3>Duración Corta</h3>
+          <p>Diseñado para completarse en 10-15 minutos desde tu computador o dispositivo móvil.</p>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <h3>Basado en Casos Reales</h3>
+          <p>Estudio de ataque real por suplantación de la Rama Judicial de Colombia y entidades locales.</p>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <h3>Certificado Institucional</h3>
+          <p>Al completar las actividades obtendrás tu certificado digital imprimible de cumplimiento.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- MÓDULO 2: IDENTIFICA LAS SEÑALES (RÉPLICA DE CORREO) -->
+    <div class="module-card" id="mod-2">
+      <h2 class="section-title">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        Caso Práctico: Réplica del Correo Malicioso
+      </h2>
+      <p class="section-subtitle">Haz clic sobre cada uno de los <strong>6 elementos sospechosos</strong> dentro del correo ficticio para identificarlos y aprender por qué representan una amenaza.</p>
+
+      <div class="detector-layout">
+        <!-- VISTA DE CORREO -->
+        <div class="email-container">
+          <div class="email-header-bar">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+            <span style="margin-left: 0.5rem; font-weight: 600;">Bandeja de Entrada - Notificación Recibida</span>
+          </div>
+
+          <div class="email-content">
+            <!-- HOTSPOT 1: REMITENTE -->
+            <div class="email-field">
+              <label>De:</label>
+              <div class="hotspot" id="hs-1" onclick="revealHotspot(1)">
+                <span>notificaciones.judiciales.co@gmail.com</span> (enviado a través de <em>notificaciones@ips-salud-ejemplo.com.co</em>)
+                <span class="hotspot-tag">?</span>
+              </div>
+            </div>
+
+            <!-- HOTSPOT 2: ASUNTO -->
+            <div class="email-field">
+              <label>Asunto:</label>
+              <div class="hotspot" id="hs-2" onclick="revealHotspot(2)">
+                <span style="font-weight: 700; color: #9f1239;">URGENTE: NOTIFICACIÓN DE SENTENCIA PROBATORIA - JUZGADO 14 - CITA OBLIGATORIA</span>
+                <span class="hotspot-tag">?</span>
+              </div>
+            </div>
+
+            <!-- CUERPO DE CORREO -->
+            <div class="email-body-text">
+              <p>Estimado(a) funcionario(a) / colaborador(a) de la IPS,</p>
+              <br>
+              <p>Por medio de la presente se le notifica que cursa en su contra diligencia probatoria de la Rama Judicial de Colombia. Debe ingresar al expediente digital adjunto para conocer la fecha de comparecencia obligatoria.</p>
+
+              <!-- HOTSPOT 3: ENLACE NUBE EXTERNA -->
+              <div class="attachment-box">
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#e11d48" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                  <div>
+                    <div style="font-weight: 700; font-size: 0.9rem;">Sentencia_Probatoria_Oficial.pdf</div>
+                    <div style="font-size: 0.75rem; color: #64748b;">Tamaño: 2.4 MB | Tipo: Enlace Externo Drive</div>
+                  </div>
+                </div>
+                <div class="hotspot" id="hs-3" onclick="revealHotspot(3)">
+                  <strong>[ Abrir documento en Google Drive ]</strong>
+                  <span class="hotspot-tag">?</span>
+                </div>
+              </div>
+
+              <!-- HOTSPOT 4: PIN DE DESBLOQUEO -->
+              <div style="background: #fffbeeb3; border: 1px solid #fde68a; padding: 1rem; border-radius: 6px; margin: 1rem 0;">
+                <p style="font-size: 0.88rem; color: #92400e;">
+                  <strong>Importante para visualizar el documento:</strong> El archivo PDF se encuentra cifrado por protección judicial.
+                </p>
+                <div class="hotspot" id="hs-4" onclick="revealHotspot(4)" style="margin-top: 0.5rem; width: 100%;">
+                  👉 Para desbloquear el archivo ingrese el código PIN obligatorio: <strong>[ 8 4 9 2 ]</strong>
+                  <span class="hotspot-tag">?</span>
+                </div>
+              </div>
+
+              <!-- HOTSPOT 5: CAMPAÑA ROTATIVA -->
+              <p style="font-size: 0.85rem; color: #64748b; margin-top: 1rem;">
+                <div class="hotspot" id="hs-5" onclick="revealHotspot(5)">
+                  ℹ️ *Variantes del correo recibidas también suplantando a la Alcaldía de Pasto y Alcaldía de Fresno Tolima con otros PINes (ej. 3921).*
+                  <span class="hotspot-tag">?</span>
+                </div>
+              </p>
+
+              <!-- HOTSPOT 6: PIE DE PÁGINA INCONSISTENTE -->
+              <div class="email-footer-legal">
+                <div class="hotspot" id="hs-6" onclick="revealHotspot(6)">
+                  AVISO DE CONFIDENCIALIDAD: Este correo y sus anexos son emitidos por la Superintendencia de Servicios Públicos Domiciliarios. Si usted no es el destinatario, borre este mensaje inmediatamente...
+                  <span class="hotspot-tag">?</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PANEL DE RETROALIMENTACIÓN -->
+        <div class="sidebar-feedback">
+          <div class="findings-counter" id="findingsCounter">
+            Señales Detectadas: 0 de 6
+          </div>
+
+          <div class="feedback-detail-card" id="feedbackDetailCard">
+            <h4 style="color: var(--primary); margin-bottom: 0.5rem;" id="feedbackTitle">Haz clic en una señal</h4>
+            <p style="font-size: 0.9rem; color: var(--text-muted);" id="feedbackBody">
+              Toca o haz clic sobre los elementos marcados con bordes intermitentes en la réplica del correo para examinar las alertas sospechosas.
+            </p>
+          </div>
+
+          <div style="margin-top: 1.5rem;" id="mod2SuccessNav">
+            <button class="btn btn-primary" style="width: 100%; display: none;" id="btnNextMod2" onclick="switchModule(3)">
+              ¡Señales Encontradas! Ir al Quiz →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MÓDULO 3: QUIZ DE ESCENARIOS -->
+    <div class="module-card" id="mod-3">
+      <h2 class="section-title">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        Quiz Práctico de Escenarios
+      </h2>
+      <p class="section-subtitle">Analiza los siguientes casos de correos que podrían llegar a tu puesto de trabajo en la IPS y determina si son legítimos o intentos de phishing.</p>
+
+      <div class="quiz-card" id="quizCard">
+        <div class="quiz-progress-text" id="quizStepTitle">Pregunta 1 de 10</div>
+        <div class="quiz-question-title" id="quizQuestionText">Cargando pregunta...</div>
+        
+        <div class="quiz-email-preview" id="quizEmailPreview">
+          <!-- Detalle del correo de la pregunta -->
+        </div>
+
+        <div class="quiz-options" id="quizOptionsContainer">
+          <!-- Opciones de respuesta -->
+        </div>
+
+        <div class="quiz-explanation" id="quizExplanationBox">
+          <!-- Retroalimentación inmediata -->
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <button class="btn btn-secondary" id="btnPrevQuiz" onclick="navigateQuiz(-1)" style="visibility: hidden;">
+          ← Anterior
+        </button>
+        <button class="btn btn-primary" id="btnNextQuiz" onclick="navigateQuiz(1)" style="display: none;">
+          Siguiente Pregunta →
+        </button>
+      </div>
+    </div>
+
+    <!-- MÓDULO 4: PROTOCOLO POST-CLIC -->
+    <div class="module-card" id="mod-4">
+      <h2 class="section-title">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        ¿Qué hacer si ya hiciste clic o ingresaste un PIN?
+      </h2>
+      <p class="section-subtitle">Protocolo de actuación inmediata, ágil y sin juzgar a ningún empleado.</p>
+
+      <div class="no-blame-banner">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+        <div>
+          <h3>¡No te preocupes! Reportar a tiempo salva la información</h3>
+          <p>Los ciberdelincuentes usan técnicas engañosas avanzadas. En nuestra IPS valoramos tu honestidad y rapidez. Si reportas de inmediato, evitas la propagación de malware y <strong>no habrá ninguna sanción</strong>.</p>
+        </div>
+      </div>
+
+      <div class="checklist-container">
+        <div class="checklist-item" onclick="toggleChecklist(this, 1)">
+          <div class="checkbox-custom" id="chk-1">✓</div>
+          <div class="checklist-text">
+            <h4>1. Notifica al equipo de TI / Ciberseguridad de inmediato</h4>
+            <p>Comunícate por teléfono o canal interno. Entre más rápido conozcamos la situación, más rápido podemos aislar la amenaza antes de que afecte los servidores PACS o datos de pacientes.</p>
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggleChecklist(this, 2)">
+          <div class="checkbox-custom" id="chk-2">✓</div>
+          <div class="checklist-text">
+            <h4>2. Detén cualquier ingreso adicional de información</h4>
+            <p>No introduzcas más claves, PINes o datos personales en ventanas sospechosas o enlaces a Google Drive / OneDrive externos.</p>
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggleChecklist(this, 3)">
+          <div class="checkbox-custom" id="chk-3">✓</div>
+          <div class="checklist-text">
+            <h4>3. NO apagues la computadora de forma brusca</h4>
+            <p>Mantén el equipo encendido. Desconecta el cable de red o apaga el WiFi si el equipo de TI te lo indica. Apagar el equipo bruscamente puede borrar evidencias forenses necesarias para contener el virus.</p>
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggleChecklist(this, 4)">
+          <div class="checkbox-custom" id="chk-4">✓</div>
+          <div class="checklist-text">
+            <h4>4. Espera y sigue las instrucciones del equipo de soporte</h4>
+            <p>El personal técnico verificará tu equipo, cambiará credenciales si es necesario y asegurará tu estación de trabajo de imágenes diagnósticas.</p>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn btn-primary" onclick="switchModule(5)">
+        Continuar a Canales de Reporte →
+      </button>
+    </div>
+
+    <!-- MÓDULO 5: PROTOCOLO DE REPORTE INTERNO -->
+    <div class="module-card" id="mod-5">
+      <h2 class="section-title">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Canales Internos de Reporte
+      </h2>
+      <p class="section-subtitle">Directorio de contacto dentro de la IPS para notificar amenazas de ciberseguridad (los datos pueden ser adaptados por la administración).</p>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h4>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Mesa de Ayuda TI & Ciberseguridad
+          </h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">Correo institucional para reenvío de correos sospechosos:</p>
+          <input type="text" class="editable-input" value="soporte.ti@ips-radiologia-ejemplo.com.co">
+        </div>
+
+        <div class="contact-card">
+          <h4>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Línea Urgencia Telefónica / Extensión
+          </h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">Atención inmediata de incidentes en sedes:</p>
+          <input type="text" class="editable-input" value="Extensión 101 / 102 - Línea Directa (601) 555-0199">
+        </div>
+      </div>
+
+      <h3 style="color: var(--primary); margin-bottom: 1rem;">¿Cómo reenviar un correo sospechoso a TI?</h3>
+      <div class="steps-timeline">
+        <div class="timeline-step">
+          <div class="step-number">1</div>
+          <div>
+            <strong>No abras enlaces ni archivos adjuntos</strong> dentro del mensaje dudoso.
+          </div>
+        </div>
+        <div class="timeline-step">
+          <div class="step-number">2</div>
+          <div>
+            En tu cliente de correo (Outlook / Webmail), selecciona la opción <strong>"Reenviar como archivo adjunto"</strong> (.eml) para conservar los encabezados técnicos originales.
+          </div>
+        </div>
+        <div class="timeline-step">
+          <div class="step-number">3</div>
+          <div>
+            Envía el correo a la cuenta de la Mesa de Ayuda TI descrita arriba con el asunto: <em>"ALERTA: Correo sospechoso reportado"</em>.
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 2rem;">
+        <button class="btn btn-primary" onclick="switchModule(6)">
+          Ver y Descargar Certificado →
+        </button>
+      </div>
+    </div>
+
+    <!-- MÓDULO 6: CERTIFICADO FINAL -->
+    <div class="module-card" id="mod-6">
+      <h2 class="section-title">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+        Certificado de Capacitación Cumplida
+      </h2>
+      <p class="section-subtitle">Ingresa tus datos personales para generar e imprimir tu constancia oficial de capacitación anti-phishing IPS.</p>
+
+      <div class="certificate-form">
+        <div class="form-group">
+          <label for="empName">Nombre Completo del Colaborador/a:</label>
+          <input type="text" id="empName" class="form-control" placeholder="Ej. Dra. María Fernanda Gómez" oninput="updateCertificate()">
+        </div>
+        <div class="form-row" style="display: flex; gap: 1rem;">
+          <div class="form-group" style="flex: 1;">
+            <label for="empDoc">Cédula de Ciudadanía / Documento:</label>
+            <input type="text" id="empDoc" class="form-control" placeholder="Ej. 1.098.765.432" oninput="updateCertificate()">
+          </div>
+          <div class="form-group" style="flex: 1;">
+            <label for="empRole">Cargo / Área de la IPS:</label>
+            <input type="text" id="empRole" class="form-control" placeholder="Ej. Tecnólogo en Radiología" oninput="updateCertificate()">
+          </div>
+        </div>
+      </div>
+
+      <!-- VISTA PREVIA DEL CERTIFICADO IMPRIMIBLE -->
+      <div class="certificate-frame" id="certificateVisual">
+        <div class="cert-header">
+          <div class="cert-logo">🏥 IPS RADIOLOGÍA</div>
+          <div class="cert-title">Certificado de Capacitación</div>
+          <div class="cert-subtitle">Prevención de Phishing y Seguridad de Datos de Salud | Colombia</div>
+        </div>
+
+        <div class="cert-body">
+          <p>Hace constar que el/la profesional:</p>
+          <div class="cert-recipient" id="certRecipientDisplay">NOMBRE Y APELLIDOS DEL EMPLEADO</div>
+          <div class="cert-details">
+            Con documento de identidad N° <strong id="certDocDisplay">CC X.XXX.XXX</strong> en el cargo/área de <strong id="certRoleDisplay">IPS Radiología</strong>, ha completado exitosamente el programa interactivo de entrenamiento en <strong>Identificación de Correos Maliciosos y Respuesta ante Incidentes de Ciberseguridad</strong>.
+          </div>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">
+            Fecha de emisión: <strong id="certDateDisplay">-- de ---------- de 2026</strong> | Calificación Quiz: <strong id="certScoreDisplay">10/10 (100%)</strong>
+          </p>
+        </div>
+
+        <div class="cert-footer">
+          <div class="cert-signature">
+            <div class="cert-signature-line"></div>
+            <div class="cert-signature-title">Coordinación de Ciberseguridad</div>
+            <div style="font-size: 0.75rem; color: #64748b;">IPS Radiología & Salud Digital</div>
+          </div>
+
+          <div class="cert-stamp">
+            <span>VERIFICADO</span>
+            <span>IPS SALUD</span>
+            <span>2026</span>
+          </div>
+
+          <div class="cert-signature">
+            <div class="cert-signature-line"></div>
+            <div class="cert-signature-title">Dirección de Tecnología (TI)</div>
+            <div style="font-size: 0.75rem; color: #64748b;">Seguridad de la Información</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 1.5rem;">
+        <button class="btn btn-primary btn-lg" onclick="window.print()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          Imprimir / Descargar Certificado (PDF)
+        </button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- PIE DE PÁGINA -->
+  <footer>
+    <p>© 2026 IPS Radiología & Salud Digital | Colombia. Sistema de Gestión de Seguridad de la Información (SGSI).</p>
+    <p style="font-size: 0.78rem; margin-top: 0.25rem;">Capacitación basada en incidentes reales del sector salud. Todos los correos expuestos son simulaciones ficticias con fines pedagógicos.</p>
+  </footer>
+
+  <!-- LÓGICA JAVASCRIPT EMBEBIDA -->
+  <script>
+    /* ==========================================================================
+       ESTADO GLOBAL DE LA PLATAFORMA
+       ========================================================================== */
+    const state = {
+      currentModule: 1,
+      hotspotsFound: new Set(),
+      quizCurrentIndex: 0,
+      quizAnswers: {},
+      checklistState: new Set(),
+      score: 0
+    };
+
+    /* ==========================================================================
+       DATOS DEL QUIZ (10 ESCENARIOS IPS COLOMBIA)
+       ========================================================================== */
+    const quizData = [
+      {
+        id: 1,
+        question: "1. Notificación Judicial con exigencia de PIN para ver expediente",
+        preview: `<strong>De:</strong> notificaciones.judiciales.co@gmail.com<br>
+                  <strong>Asunto:</strong> URGENTE: CITACIÓN A AUDIENCIA PROBATORIA - JUZGADO 14<br>
+                  <em>Mensaje exige ingresar a Google Drive y poner un PIN numérico (8492) para abrir un supuesto PDF.</em>`,
+        options: [
+          { text: "A) Es legítimo porque cita a un juzgado oficial de Colombia.", correct: false },
+          { text: "B) Es Phishing. Ningún juzgado usa cuentas @gmail.com ni exige PINes numéricos en enlaces de almacenamiento externo.", correct: true },
+          { text: "C) Abrir el enlace e ingresar el PIN para salir de dudas.", correct: false }
+        ],
+        explanation: "¡Correcto! Los juzgados de la Rama Judicial utilizan dominios institucionales (@ramajudicial.gov.co). La solicitud de PINes numéricos para desencriptar enlaces de Google Drive es una trampa técnica para saltarse los filtros antivirus de correo e instalar malware trojano."
+      },
+      {
+        id: 2,
+        question: "2. Notificación interna del sistema de imágenes PACS / RIS",
+        preview: `<strong>De:</strong> soporte-pacs@ips-radiologia.com.co<br>
+                  <strong>Asunto:</strong> Mantenimiento Programado del Servidor PACS - Domingo 02:00 AM<br>
+                  <em>Mensaje informativo que avisa suspensión temporal del servicio por 1 hora. No contiene enlaces ni pide contraseñas.</em>`,
+        options: [
+          { text: "A) Es un correo Legítimo e informativo de soporte técnico interno.", correct: true },
+          { text: "B) Es Phishing porque menciona mantenimiento.", correct: false },
+          { text: "C) Es un virus porque llegó en fin de semana.", correct: false }
+        ],
+        explanation: "¡Correcto! El correo viene del dominio corporativo de la IPS, no solicita ingresar datos personales, contraseñas ni descargar archivos ejecutables. Es una comunicación operacional rutinaria."
+      },
+      {
+        id: 3,
+        question: "3. Supuesta circular de la DIAN informando embargo de cuentas de la IPS",
+        preview: `<strong>De:</strong> embargo.dian.colombia@dian-notificaciones.net<br>
+                  <strong>Asunto:</strong> ORDEN DE EMBARGO PREVENTIVO - RESPONDER EN 24 HORAS<br>
+                  <em>Adjunta un archivo comprimido denominado 'Anexo_Embargo_IPS_2026.js' o '.exe'.</em>`,
+        options: [
+          { text: "A) Abrir el archivo adjunto para verificar la cuenta afectada.", correct: false },
+          { text: "B) Es Phishing. El dominio 'dian-notificaciones.net' es falso y los archivos .js/.exe son ejecutables maliciosos.", correct: true },
+          { text: "C) Reenviar el correo a los médicos de turno.", correct: false }
+        ],
+        explanation: "¡Correcto! La DIAN utiliza únicamente el dominio oficial (@dian.gov.co). Las notificaciones gubernamentales reales nunca envían ejecutables (.js, .exe, .scr). Abrir esos archivos instala código ofuscado destructivo."
+      },
+      {
+        id: 4,
+        question: "4. Cotización solicitada a proveedor habitual de reactivos/contrastes",
+        preview: `<strong>De:</strong> ventas@biomedica-colombia-proveedor.com.co<br>
+                  <strong>Asunto:</strong> Cotización Medio de Contraste Yodado - IPS Radiología<br>
+                  <em>Adjunta documento de cotización formal en formato PDF estándar.</em>`,
+        options: [
+          { text: "A) Es un correo Legítimo relativo a la gestión de insumos médicos de la IPS.", correct: true },
+          { text: "B) Es un correo sospechoso porque adjunta un PDF.", correct: false },
+          { text: "C) Bloquear al remitente sin revisar.", correct: false }
+        ],
+        explanation: "¡Correcto! Corresponde a una comunicación comercial solicitada previamente, el formato de adjunto es PDF legítimo y el dominio coincide con el proveedor registrado."
+      },
+      {
+        id: 5,
+        question: "5. Suplantación de Alcaldía Municipal notificando inspección de salud",
+        preview: `<strong>De:</strong> secretaria.salud.alcaldia@gmail.com<br>
+                  <strong>Asunto:</strong> INSPECCION SANITARIA URGENTE - ALCALDÍA DE PASTO / FRESNO<br>
+                  <em>Solicita descargar un formulario en OneDrive e ingresar el PIN 3921 para certificar el local.</em>`,
+        options: [
+          { text: "A) Ingresar el PIN 3921 inmediatamente.", correct: false },
+          { text: "B) Es Phishing. Las alcaldías no envían citaciones formales desde @gmail.com ni requieren PINes de descarga.", correct: true },
+          { text: "C) Responder con los datos de los pacientes.", correct: false }
+        ],
+        explanation: "¡Correcto! Esta es una variante del ataque en campaña rotativa detectado en Colombia. Usan nombres de distintas alcaldías (Pasto, Fresno Tolima) para engañar a empleados locales."
+      },
+      {
+        id: 6,
+        question: "6. Solicitud de actualización de contraseña por parte de 'Soporte TI'",
+        preview: `<strong>De:</strong> mesa.ayuda.ips.salud@outlook.com<br>
+                  <strong>Asunto:</strong> URGENTE: Tu buzón de correo sobrepasó el límite de almacenamiento<br>
+                  <em>Pide hacer clic en un enlace a un formulario externo para escribir tu usuario y clave actual.</em>`,
+        options: [
+          { text: "A) Llenar el formulario para no quedarse sin correo.", correct: false },
+          { text: "B) Es Phishing. El área de TI de la IPS nunca te pedirá tu clave por correo ni usará dominios públicos como @outlook.com.", correct: true },
+          { text: "C) Reenviar a todos tus compañeros.", correct: false }
+        ],
+        explanation: "¡Correcto! La captura de credenciales (Phishing de clave) es el objetivo primario para ingresar al sistema de la IPS. Ningún administrador auténtico solicita contraseñas por correo."
+      },
+      {
+        id: 7,
+        question: "7. Autorización de orden médica enviada por una EPS aliada",
+        preview: `<strong>De:</strong> autorizaciones@eps-salud-aliada.com.co<br>
+                  <strong>Asunto:</strong> Autorización Servicio Tomografía Axial Computarizada - Paciente N° 9823<br>
+                  <em>Contiene datos de la orden médica e instrucciones para cargar la cita en el sistema de la IPS.</em>`,
+        options: [
+          { text: "A) Es un correo Legítimo de flujo de trabajo médico asistencial.", correct: true },
+          { text: "B) Es Phishing porque incluye números de pacientes.", correct: false },
+          { text: "C) Eliminar el correo inmediatamente.", correct: false }
+        ],
+        explanation: "¡Correcto! Es una interacción asistencial normal en el flujo de radiología entre la EPS y la IPS."
+      },
+      {
+        id: 8,
+        question: "8. Mensaje con supuesto ajuste de nómina enviado en archivo ZIP",
+        preview: `<strong>De:</strong> talento.humano.ips@gmail.com<br>
+                  <strong>Asunto:</strong> URGENTE: Error en pago de nómina quincenal - Revisar anexo<br>
+                  <em>Adjunta 'Nomina_Ajuste.zip' exigiendo abrirlo antes de finalizar la tarde.</em>`,
+        options: [
+          { text: "A) Es Phishing. Talento Humano utiliza canales corporativos y los archivos .zip inesperados con premura son peligrosos.", correct: true },
+          { text: "B) Abrir el ZIP rápido para ver la diferencia de dinero.", correct: false },
+          { text: "C) Enviar la clave del banco.", correct: false }
+        ],
+        explanation: "¡Correcto! La manipulación emocional con el salario o la nómina es un gancho común para apresurar al usuario a ejecutar virus dentro de archivos comprimidos."
+      },
+      {
+        id: 9,
+        question: "9. Remisión de resultados de imágenes entre sedes IPS",
+        preview: `<strong>De:</strong> radiologia.sede.norte@ips-radiologia.com.co<br>
+                  <strong>Asunto:</strong> Remisión Estudio Resonancia Magnética Cerebral - ID 4512<br>
+                  <em>Utiliza la plataforma cifrada y firma digital del especialista radiólogo.</em>`,
+        options: [
+          { text: "A) Es Legítimo. Cumple con los protocolos de intercambio seguro entre sedes de la IPS.", correct: true },
+          { text: "B) Es Phishing.", correct: false },
+          { text: "C) Reportar como SPAM.", correct: false }
+        ],
+        explanation: "¡Correcto! Sigue los estándares institucionales de transmisión de datos médicos."
+      },
+      {
+        id: 10,
+        question: "10. Notificación con aviso legal de una entidad ajena a la remitente",
+        preview: `<strong>De:</strong> secretaria.gobierno@entidad-ejemplo.gov.co<br>
+                  <strong>Asunto:</strong> Notificación de Inspección de Seguridad e Higiene<br>
+                  <em>Al final del correo, el pie de confidencialidad menciona a la 'Empresa de Licores del Estado' en lugar de la Secretaría de Gobierno.</em>`,
+        options: [
+          { text: "A) Es Phishing. La inconsistencia en el texto legal demuestra el uso de una plantilla de correo reciclada por atacantes.", correct: true },
+          { text: "B) Es legítimo, fue solo un error tipográfico.", correct: false },
+          { text: "C) Responder pidiendo aclaración de la licorera.", correct: false }
+        ],
+        explanation: "¡Correcto! Las inconsistencias en los avisos de confidencialidad o firmas (mencionar una entidad distinta a la remitente) revela que los atacantes copiaron y pegaron plantillas sin cuidado."
+      }
+    ];
+
+    /* ==========================================================================
+       DETALLES DE LOS HOTSPOTS (MÓDULO 2)
+       ========================================================================== */
+    const hotspotDetails = {
+      1: {
+        title: "1. Remitente Falso e Inconsistente (@gmail.com)",
+        body: "La Rama Judicial o entidades oficiales de Colombia NUNCA envían notificaciones judiciales desde cuentas de correo públicas como @gmail.com. Además, se observa una dirección de envío cruzada o suplantada."
+      },
+      2: {
+        title: "2. Sensación de Urgencia y Amenaza Legal",
+        body: "El asunto usa mayúsculas sostenidas ('URGENTE: NOTIFICACIÓN DE SENTENCIA PROBATORIA') para inducir pánico y forzar al empleado a actuar sin analizar los riesgos."
+      },
+      3: {
+        title: "3. Enlace a Servidores Genéricos (Google Drive / Nube)",
+        body: "En lugar de un documento adjunto en el servidor de correo, redirige a una carpeta externa en la nube. Esto oculta un script JavaScript ofuscado o un ejecutable malicioso que instala un troyano de acceso remoto."
+      },
+      4: {
+        title: "4. Exigencia de PIN Numérico Obligatorio",
+        body: "Solicitar un PIN (ej. 8492) para 'desbloquear' el PDF es una estratagema para obligar al usuario a desproteger el archivo malicioso manualmente, evadiendo así los escaners de seguridad del servidor de correo."
+      },
+      5: {
+        title: "5. Patrón de Campaña Rotativa",
+        body: "En este incidente real se detectó que los atacantes cambiaron sucesivamente las identidades (Rama Judicial, Alcaldía de Pasto, Alcaldía de Fresno Tolima) usando diferentes PINes para pescar a diversos empleados."
+      },
+      6: {
+        title: "6. Pie Legal Inconsistente (Error de Plantilla)",
+        body: "El correo afirma ser de la Rama Judicial/Alcaldía, pero el texto legal en el pie de página cita a la 'Superintendencia de Servicios Públicos Domiciliarios'. Este descuido es una prueba irrefutable de phishing."
+      }
+    };
+
+    /* ==========================================================================
+       LÓGICA DE NAVEGACIÓN Y CAMBIO DE MÓDULOS
+       ========================================================================== */
+    function switchModule(modNumber) {
+      state.currentModule = modNumber;
+      
+      // Actualizar tarjetas visibles
+      document.querySelectorAll('.module-card').forEach((card, idx) => {
+        card.classList.toggle('active', idx + 1 === modNumber);
+      });
+
+      // Actualizar pestañas activas
+      document.querySelectorAll('.nav-tab').forEach((tab, idx) => {
+        tab.classList.toggle('active', idx + 1 === modNumber);
+      });
+
+      // Inicializar quiz si abre modulo 3
+      if (modNumber === 3) {
+        renderQuizStep();
+      }
+
+      // Actualizar fecha en certificado si abre modulo 6
+      if (modNumber === 6) {
+        updateCertificateDate();
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      updateGlobalProgress();
+    }
+
+    /* ==========================================================================
+       LÓGICA DEL MÓDULO 2: HOTSPOTS
+       ========================================================================== */
+    function revealHotspot(id) {
+      const hsElem = document.getElementById(`hs-${id}`);
+      if (!hsElem) return;
+
+      if (!hsElem.classList.contains('found')) {
+        hsElem.classList.add('found');
+        state.hotspotsFound.add(id);
+      }
+
+      const info = hotspotDetails[id];
+      const card = document.getElementById('feedbackDetailCard');
+      card.classList.add('active');
+
+      document.getElementById('feedbackTitle').innerText = info.title;
+      document.getElementById('feedbackBody').innerText = info.body;
+
+      const count = state.hotspotsFound.size;
+      document.getElementById('findingsCounter').innerText = `Señales Detectadas: ${count} de 6`;
+      document.getElementById('badge-mod2').innerText = `${count}/6`;
+
+      if (count === 6) {
+        document.getElementById('btnNextMod2').style.display = 'block';
+        document.getElementById('badge-mod2').parentElement.classList.add('completed');
+      }
+
+      updateGlobalProgress();
+    }
+
+    /* ==========================================================================
+       LÓGICA DEL MÓDULO 3: QUIZ DE ESCENARIOS
+       ========================================================================== */
+    function renderQuizStep() {
+      const q = quizData[state.quizCurrentIndex];
+      document.getElementById('quizStepTitle').innerText = `Pregunta ${state.quizCurrentIndex + 1} de ${quizData.length}`;
+      document.getElementById('quizQuestionText').innerText = q.question;
+      document.getElementById('quizEmailPreview').innerHTML = q.preview;
+
+      const optionsContainer = document.getElementById('quizOptionsContainer');
+      optionsContainer.innerHTML = '';
+
+      const explanationBox = document.getElementById('quizExplanationBox');
+      explanationBox.className = 'quiz-explanation';
+      explanationBox.style.display = 'none';
+
+      const prevUserAns = state.quizAnswers[state.quizCurrentIndex];
+
+      q.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'quiz-option-btn';
+        btn.innerHTML = `<span>${opt.text}</span>`;
+        
+        if (prevUserAns !== undefined) {
+          if (opt.correct) {
+            btn.classList.add('selected-correct');
+          } else if (prevUserAns === idx) {
+            btn.classList.add('selected-incorrect');
+          }
+          btn.disabled = true;
+        } else {
+          btn.onclick = () => selectQuizOption(idx);
+        }
+
+        optionsContainer.appendChild(btn);
+      });
+
+      if (prevUserAns !== undefined) {
+        showQuizExplanation(prevUserAns);
+        document.getElementById('btnNextQuiz').style.display = 'inline-flex';
+      } else {
+        document.getElementById('btnNextQuiz').style.display = 'none';
+      }
+
+      document.getElementById('btnPrevQuiz').style.visibility = state.quizCurrentIndex > 0 ? 'visible' : 'hidden';
+    }
+
+    function selectQuizOption(optionIdx) {
+      const q = quizData[state.quizCurrentIndex];
+      state.quizAnswers[state.quizCurrentIndex] = optionIdx;
+
+      if (q.options[optionIdx].correct) {
+        state.score += 1;
+      }
+
+      const answeredCount = Object.keys(state.quizAnswers).length;
+      document.getElementById('badge-mod3').innerText = `${answeredCount}/10`;
+      if (answeredCount === 10) {
+        document.getElementById('badge-mod3').parentElement.classList.add('completed');
+      }
+
+      renderQuizStep();
+      updateGlobalProgress();
+    }
+
+    function showQuizExplanation(userAnsIdx) {
+      const q = quizData[state.quizCurrentIndex];
+      const isCorrect = q.options[userAnsIdx].correct;
+      const box = document.getElementById('quizExplanationBox');
+      box.className = `quiz-explanation show ${isCorrect ? 'correct' : 'incorrect'}`;
+      box.innerHTML = `<strong>${isCorrect ? '¡Respuesta Correcta!' : 'Respuesta Incorrecta'}</strong><p style="margin-top:0.4rem;">${q.explanation}</p>`;
+    }
+
+    function navigateQuiz(dir) {
+      const newIdx = state.quizCurrentIndex + dir;
+      if (newIdx >= 0 && newIdx < quizData.length) {
+        state.quizCurrentIndex = newIdx;
+        renderQuizStep();
+      } else if (newIdx >= quizData.length) {
+        switchModule(4);
+      }
+    }
+
+    /* ==========================================================================
+       LÓGICA DEL MÓDULO 4: CHECKLIST
+       ========================================================================== */
+    function toggleChecklist(itemElem, id) {
+      itemElem.classList.toggle('checked');
+      if (state.checklistState.has(id)) {
+        state.checklistState.delete(id);
+      } else {
+        state.checklistState.add(id);
+      }
+
+      const count = state.checklistState.size;
+      document.getElementById('badge-mod4').innerText = `${count}/4`;
+      if (count === 4) {
+        document.getElementById('badge-mod4').parentElement.classList.add('completed');
+      }
+
+      updateGlobalProgress();
+    }
+
+    /* ==========================================================================
+       LÓGICA DEL MÓDULO 6: CERTIFICADO Y FECHA
+       ========================================================================== */
+    function updateCertificate() {
+      const name = document.getElementById('empName').value.trim();
+      const doc = document.getElementById('empDoc').value.trim();
+      const role = document.getElementById('empRole').value.trim();
+
+      document.getElementById('certRecipientDisplay').innerText = name || 'NOMBRE Y APELLIDOS DEL EMPLEADO';
+      document.getElementById('certDocDisplay').innerText = doc ? `CC ${doc}` : 'CC X.XXX.XXX';
+      document.getElementById('certRoleDisplay').innerText = role || 'IPS Radiología';
+    }
+
+    function updateCertificateDate() {
+      const today = new Date();
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      const dateStr = today.toLocaleDateString('es-CO', options);
+      document.getElementById('certDateDisplay').innerText = dateStr;
+
+      // Calcular calificacion
+      const scoreTotal = `${state.score}/10 (${state.score * 10}%)`;
+      document.getElementById('certScoreDisplay').innerText = scoreTotal;
+    }
+
+    /* ==========================================================================
+       CÁLCULO DEL PROGRESO GLOBAL ACUMULADO
+       ========================================================================== */
+    function updateGlobalProgress() {
+      let progress = 0;
+
+      // Modulo 1 visto: 10%
+      progress += 10;
+
+      // Modulo 2: hasta 30% (5% por cada hotspot)
+      progress += (state.hotspotsFound.size / 6) * 30;
+
+      // Modulo 3: hasta 40% (4% por pregunta del quiz)
+      const answeredQuiz = Object.keys(state.quizAnswers).length;
+      progress += (answeredQuiz / 10) * 40;
+
+      // Modulo 4: hasta 20% (5% por item del checklist)
+      progress += (state.checklistState.size / 4) * 20;
+
+      const rounded = Math.min(100, Math.round(progress));
+      document.getElementById('globalProgressBar').style.width = `${rounded}%`;
+      document.getElementById('globalProgressText').innerText = `${rounded}% Completado`;
+    }
+
+    // Inicialización al cargar
+    document.addEventListener('DOMContentLoaded', () => {
+      updateGlobalProgress();
+      updateCertificateDate();
+    });
+  </script>
+</body>
+</html>

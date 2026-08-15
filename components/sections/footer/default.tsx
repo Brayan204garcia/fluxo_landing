@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
-import LaunchUI from "../../logos/launch-ui";
+import FluxoAILogo from "../../logos/fluxo-ai";
 import {
   Footer,
   FooterBottom,
@@ -33,37 +33,36 @@ interface FooterProps {
 }
 
 export default function FooterSection({
-  logo = <LaunchUI />,
-  name = "Launch UI",
+  logo = <FluxoAILogo className="h-7 w-auto text-foreground" />,
+  name = "",
   columns = [
     {
-      title: "Product",
+      title: "Soluciones",
       links: [
-        { text: "Changelog", href: siteConfig.url },
-        { text: "Documentation", href: siteConfig.url },
+        { text: "Agentes de IA", href: "#servicios" },
+        { text: "Desarrollo Web", href: "#servicios" },
       ],
     },
     {
-      title: "Company",
+      title: "Navegación",
       links: [
-        { text: "About", href: siteConfig.url },
-        { text: "Careers", href: siteConfig.url },
-        { text: "Blog", href: siteConfig.url },
+        { text: "Servicios", href: "#servicios" },
+        { text: "Proyectos", href: "#proyectos" },
+        { text: "Contacto", href: "#contacto" },
       ],
     },
     {
-      title: "Contact",
+      title: "Contacto Directo",
       links: [
-        { text: "Discord", href: siteConfig.url },
-        { text: "Twitter", href: siteConfig.url },
-        { text: "GitHub", href: siteConfig.links.github },
+        { text: "WhatsApp", href: siteConfig.links.whatsapp },
+        { text: "Correo Electrónico", href: siteConfig.links.email },
       ],
     },
   ],
-  copyright = "© 2026 Mikołaj Dobrucki. All rights reserved",
+  copyright = "© 2026 Fluxo AI. Todos los derechos reservados.",
   policies = [
-    { text: "Privacy Policy", href: siteConfig.url },
-    { text: "Terms of Service", href: siteConfig.url },
+    { text: "Política de Privacidad", href: "#" },
+    { text: "Términos del Servicio", href: "#" },
   ],
   showModeToggle = true,
   className,

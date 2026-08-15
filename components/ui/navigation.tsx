@@ -7,7 +7,7 @@ import { ReactNode } from "react";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
-import LaunchUI from "../logos/launch-ui";
+import FluxoAILogo from "../logos/fluxo-ai";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -48,75 +48,85 @@ interface NavigationProps {
 export default function Navigation({
   menuItems = [
     {
-      title: "Getting started",
+      title: "Servicios",
       content: "default",
     },
     {
-      title: "Components",
+      title: "Proyectos",
       content: "components",
     },
     {
-      title: "Documentation",
+      title: "Contacto",
       isLink: true,
-      href: siteConfig.getStartedUrl,
+      href: "#contacto",
     },
   ],
   components = [
     {
-      title: "Alert Dialog",
-      href: `${siteConfig.url}/docs/primitives/alert-dialog`,
+      title: "Agentes de IA",
+      href: "#servicios",
       description:
-        "A modal dialog that interrupts the user with important content and expects a response.",
+        "Bots conversacionales y asistentes inteligentes integrados con WhatsApp y modelos de lenguaje.",
     },
     {
-      title: "Hover Card",
-      href: `${siteConfig.url}/docs/primitives/hover-card`,
+      title: "Desarrollo Web",
+      href: "#servicios",
       description:
-        "For sighted users to preview content available behind a link.",
+        "Creación de aplicaciones web modernas, rápidas y totalmente adaptables.",
     },
     {
-      title: "Progress",
-      href: `${siteConfig.url}/docs/primitives/progress`,
+      title: "Sistemas Cloud",
+      href: "#servicios",
       description:
-        "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+        "Infraestructura escalable y almacenamiento seguro para empresas.",
     },
     {
-      title: "Scroll Area",
-      href: `${siteConfig.url}/docs/primitives/scroll-area`,
-      description: "A scrollable container with custom scrollbars.",
+      title: "Integraciones API",
+      href: "#servicios",
+      description:
+        "Conexión de sistemas empresariales, pasarelas de pago y servicios de mensajería.",
     },
     {
-      title: "Tabs",
-      href: `${siteConfig.url}/docs/primitives/tabs`,
+      title: "Apps Móviles",
+      href: "#servicios",
       description:
-        "A set of layered sections of content, known as tab panels, that are displayed one at a time.",
+        "Soluciones móviles multiplataforma orientadas a alta productividad.",
     },
     {
-      title: "Tooltip",
-      href: `${siteConfig.url}/docs/primitives/tooltip`,
+      title: "Soporte y Mantenimiento",
+      href: "#contacto",
       description:
-        "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+        "Asistencia técnica continua, monitoreo de disponibilidad y optimización.",
     },
   ],
-  logo = <LaunchUI />,
-  logoTitle = "Launch UI",
-  logoDescription = "Landing page template built with React, Shadcn/ui and Tailwind that you can copy/paste into your project.",
-  logoHref = siteConfig.getStartedUrl,
+  logo = <FluxoAILogo className="h-6 w-auto text-foreground" />,
+  logoTitle = "",
+  logoDescription = "Soluciones de ingeniería de software a medida y agentes de Inteligencia Artificial para tu empresa.",
+  logoHref = "#servicios",
   introItems = [
     {
-      title: "Introduction",
-      href: siteConfig.getStartedUrl,
-      description: "Reusable components built using Radix UI and Tailwind CSS.",
+      title: "Desarrollo web",
+      href: "#servicios",
+      description:
+        "Sitios, landing pages y paneles a medida construidos desde cero para las necesidades reales de tu negocio.",
     },
     {
-      title: "Installation",
-      href: siteConfig.getStartedUrl,
-      description: "How to install dependencies and structure your app.",
+      title: "Integraciones con IA",
+      href: "#servicios",
+      description:
+        "Asistentes conectados a WhatsApp o Telegram con respuestas sobre la información real de tu negocio.",
     },
     {
-      title: "Typography",
-      href: siteConfig.getStartedUrl,
-      description: "Styles for headings, paragraphs, and lists.",
+      title: "Automatización de procesos",
+      href: "#servicios",
+      description:
+        "Flujos que conectan tus herramientas (Drive, formularios, BD) para mover información sin trabajo manual.",
+    },
+    {
+      title: "Software a medida",
+      href: "#servicios",
+      description:
+        "Aplicaciones internas, puntos de venta y portales de gestión diseñados a la medida de tu equipo.",
     },
   ],
 }: NavigationProps) {
@@ -137,8 +147,8 @@ export default function Navigation({
                 <NavigationMenuTrigger>{item.title}</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   {item.content === "default" ? (
-                    <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                      <li className="row-span-3">
+                    <ul className="grid gap-3 p-4 md:w-[450px] lg:w-[600px] lg:grid-cols-[.85fr_1fr]">
+                      <li className="row-span-4">
                         <NavigationMenuLink asChild>
                           <a
                             className="from-muted/30 to-muted/10 flex h-full w-full flex-col justify-end rounded-md bg-linear-to-b p-6 no-underline outline-hidden select-none focus:shadow-md"

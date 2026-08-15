@@ -1,22 +1,20 @@
 import {
-  BlocksIcon,
-  EclipseIcon,
-  FastForwardIcon,
-  LanguagesIcon,
-  MonitorSmartphoneIcon,
-  RocketIcon,
-  ScanFaceIcon,
-  SquarePenIcon,
+  ArrowLeftRightIcon,
+  BotIcon,
+  CodeXmlIcon,
+  GlobeIcon,
 } from "lucide-react";
 import { ReactNode } from "react";
 
-import { Item, ItemDescription, ItemIcon, ItemTitle } from "../../ui/item";
+import { Button } from "../../ui/button";
 import { Section } from "../../ui/section";
+import { cn } from "@/lib/utils";
 
 interface ItemProps {
   title: string;
   description: string;
   icon: ReactNode;
+  variant?: "default" | "glow-brand";
 }
 
 interface ItemsProps {
@@ -27,69 +25,87 @@ interface ItemsProps {
 
 const DEFAULT_ITEMS: ItemProps[] = [
   {
-    title: "Accessibility first",
-    description: "Fully WCAG 2.0 compliant, made with best a11y practices",
-    icon: <ScanFaceIcon className="size-5 stroke-1" />,
+    title: "Desarrollo web",
+    description:
+      "Sitios, landing pages y paneles a medida, construidos desde cero para lo que tu negocio realmente necesita mostrar o gestionar — no una plantilla genérica ni un builder de arrastrar y soltar.",
+    icon: <GlobeIcon className="size-5 stroke-[1.5]" />,
+    variant: "default",
   },
   {
-    title: "Responsive design",
-    description: "Looks and works great on any device and screen size",
-    icon: <MonitorSmartphoneIcon className="size-5 stroke-1" />,
+    title: "Integraciones con IA",
+    description:
+      "Asistentes conectados a WhatsApp o Telegram que responden con la información real de tu negocio — catálogos, inventario, procedimientos — usando búsqueda semántica en vez de respuestas genéricas.",
+    icon: <BotIcon className="size-5 stroke-[1.5]" />,
+    variant: "glow-brand",
   },
   {
-    title: "Light and dark mode",
-    description: "Seamless switching between color schemes, 6 themes included",
-    icon: <EclipseIcon className="size-5 stroke-1" />,
+    title: "Automatización de procesos",
+    description:
+      "Flujos que conectan tus herramientas — Drive, formularios, bases de datos, mensajería — para que la información se mueva sola entre sistemas sin que nadie tenga que copiarla a mano.",
+    icon: <ArrowLeftRightIcon className="size-5 stroke-[1.5]" />,
+    variant: "default",
   },
   {
-    title: "Easy to customize",
-    description: "Flexible options to match your product or brand",
-    icon: <BlocksIcon className="size-5 stroke-1" />,
-  },
-  {
-    title: "Top-level performance",
-    description: "Made for lightning-fast load times and smooth interactions",
-    icon: <FastForwardIcon className="size-5 stroke-1" />,
-  },
-  {
-    title: "Production ready",
-    description: "Thoroughly tested and launch-prepared",
-    icon: <RocketIcon className="size-5 stroke-1" />,
-  },
-  {
-    title: "Made for localization",
-    description: "Easy to implement support for multiple languages and regions",
-    icon: <LanguagesIcon className="size-5 stroke-1" />,
-  },
-  {
-    title: "CMS friendly",
-    description: "Built to work with any headless content management system",
-    icon: <SquarePenIcon className="size-5 stroke-1" />,
+    title: "Software a medida",
+    description:
+      "Aplicaciones internas — puntos de venta, control de asistencia, paneles administrativos — diseñadas para cómo tu equipo trabaja de verdad, no ajustadas a la fuerza a una plantilla genérica.",
+    icon: <CodeXmlIcon className="size-5 stroke-[1.5]" />,
+    variant: "glow-brand",
   },
 ];
 
 export default function Items({
-  title = "Everything you need. Nothing you don't.",
+  title = "Cuatro frentes, un solo responsable de punta a punta",
   items = DEFAULT_ITEMS,
   className,
 }: ItemsProps) {
   return (
     <Section className={className}>
-      <div className="max-w-container mx-auto flex flex-col items-center gap-6 sm:gap-20">
-        <h2 className="max-w-[560px] text-center text-3xl leading-tight font-semibold sm:text-5xl sm:leading-tight">
+      <div className="max-w-container mx-auto flex flex-col items-center gap-12 sm:gap-16">
+        <h2 className="max-w-[760px] text-center text-3xl leading-tight font-semibold sm:text-5xl sm:leading-tight">
           {title}
         </h2>
         {items !== false && items.length > 0 && (
-          <div className="grid auto-rows-fr grid-cols-2 gap-0 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
-            {items.map((item) => (
-              <Item key={item.title}>
-                <ItemTitle className="flex items-center gap-2">
-                  <ItemIcon>{item.icon}</ItemIcon>
-                  {item.title}
-                </ItemTitle>
-                <ItemDescription>{item.description}</ItemDescription>
-              </Item>
-            ))}
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {items.map((item) => {
+              const isGlowBrand = item.variant === "glow-brand";
+              return (
+                <div
+                  key={item.title}
+                  className={cn(
+                    "relative flex flex-col justify-between gap-6 overflow-hidden rounded-2xl p-8 shadow-xl transition-all duration-300 hover:-translate-y-1",
+                    isGlowBrand
+                      ? "glass-3 from-card/100 to-card/100 dark:glass-4 after:content-[''] after:absolute after:-top-[128px] after:left-1/2 after:h-[128px] after:w-[100%] after:max-w-[960px] after:-translate-x-1/2 after:rounded-[50%] after:bg-brand-foreground/70 dark:after:bg-brand/70 after:blur-[72px]"
+                      : "glass-2 to-transparent dark:glass-3 after:content-[''] after:absolute after:-top-[128px] after:left-1/2 after:h-[128px] after:w-[100%] after:max-w-[960px] after:-translate-x-1/2 after:rounded-[50%] dark:after:bg-foreground/20 after:blur-[72px]"
+                  )}
+                >
+                  <hr
+                    className={cn(
+                      "absolute top-0 left-[10%] h-[1px] w-[80%] border-0 bg-linear-to-r from-transparent to-transparent z-10",
+                      isGlowBrand ? "via-brand" : "via-foreground/60"
+                    )}
+                  />
+                  <div className="flex flex-col gap-4 relative z-10">
+                    <div className="flex items-center gap-3">
+                      <div className="flex size-10 items-center justify-center rounded-xl bg-foreground/5 border border-foreground/10 text-foreground shrink-0">
+                        {item.icon}
+                      </div>
+                      <h3 className="text-lg font-bold text-foreground">
+                        {item.title}
+                      </h3>
+                    </div>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                  <div className="relative z-10 pt-2 mt-auto">
+                    <Button className="w-full bg-white text-black hover:bg-neutral-200 font-semibold cursor-pointer shadow-md transition-colors h-10 rounded-xl">
+                      Más información
+                    </Button>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         )}
       </div>

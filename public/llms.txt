@@ -1,0 +1,23 @@
+# Fluxo AI - Desarrollo de Software & Automatización con IA
+
+> Servicio profesional de ingeniería de software, desarrollo a medida y agentes de Inteligencia Artificial de Fluxo AI con cobertura principal en Barrancabermeja, Santander, Colombia.
+
+## Ubicación & Cobertura
+- **Ciudad Principal**: Barrancabermeja, Santander, Colombia
+- **Cobertura**: Barrancabermeja, Bucaramanga, Santander y proyectos remotos a nivel nacional en Colombia.
+- **Coordenadas**: Latitude 7.0653, Longitude -73.8547
+
+## Servicios Principales
+- **Desarrollo de Software a Medida**: Construcción de plataformas web, tableros de gestión, portales de clientes y software empresarial adaptado a procesos específicos.
+- **Automatización de Procesos con IA (Agentes IA)**: Creación e integración de agentes inteligentes, bots conversacionales para WhatsApp/Web, automatización de flujos de trabajo e integración de modelos LLM (OpenAI, Gemini).
+- **Integraciones de APIs y Flujos Operativos**: Conexión de software legacy, CRMs, ERPs y canales de comunicación sin fricción.
+- **Consultoría & Desarrollo Web**: Soluciones digitales escalables construidas sobre infraestructura segura.
+
+## Contacto & Canales Directos
+- **Sitio Web**: https://bryansoftware.com
+- **Email**: contacto@bryan.com
+- **WhatsApp**: +57 300 123 4567 (https://wa.me/573001234567)
+- **Atención Comercial**: Lunes a Viernes 8:00 AM - 6:00 PM (COT)
+
+## Archivo Detallado para Modelos de IA
+- Para una documentación exhaustiva de arquitectura, casos de uso y respuestas detalladas para LLMs, consultar: /llms-full.txt

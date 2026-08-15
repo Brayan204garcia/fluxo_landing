@@ -7,7 +7,7 @@ import { ReactNode } from "react";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
-import LaunchUI from "../../logos/launch-ui";
+import FluxoAILogo from "../../logos/fluxo-ai";
 import { Button, buttonVariants } from "../../ui/button";
 import {
   Navbar as NavbarComponent,
@@ -43,19 +43,18 @@ interface NavbarProps {
 }
 
 export default function Navbar({
-  logo = <LaunchUI />,
-  name = "Launch UI",
-  homeUrl = siteConfig.url,
+  logo = <FluxoAILogo className="h-7 sm:h-8 w-auto text-foreground" />,
+  name = "",
+  homeUrl = "#",
   mobileLinks = [
-    { text: "Getting Started", href: siteConfig.url },
-    { text: "Components", href: siteConfig.url },
-    { text: "Documentation", href: siteConfig.url },
+    { text: "Servicios", href: "#servicios" },
+    { text: "Proyectos", href: "#proyectos" },
+    { text: "Contacto", href: "#contacto" },
   ],
   actions = [
-    { text: "Sign in", href: siteConfig.url, isButton: false },
     {
-      text: "Get Started",
-      href: siteConfig.url,
+      text: "Hablemos de tu proyecto",
+      href: "#contacto",
       isButton: true,
       variant: "default",
     },

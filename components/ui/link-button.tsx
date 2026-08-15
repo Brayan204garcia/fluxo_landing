@@ -10,6 +10,7 @@ export interface LinkButtonProps {
   icon?: ReactNode;
   iconRight?: ReactNode;
   size?: ComponentProps<typeof Button>["size"];
+  className?: string;
 }
 
 export function LinkButton({
@@ -19,9 +20,10 @@ export function LinkButton({
   icon,
   iconRight,
   size = "lg",
+  className,
 }: LinkButtonProps) {
   return (
-    <Button variant={variant} size={size} asChild>
+    <Button variant={variant} size={size} className={className} asChild>
       <a href={href}>
         {icon}
         {children}
