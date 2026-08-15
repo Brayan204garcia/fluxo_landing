@@ -107,10 +107,9 @@ export default function Navbar({
               <SheetTrigger asChild>
                 <Button
                   variant="ghost"
-                  size="icon"
-                  className="shrink-0 md:hidden h-14 w-14"
+                  className="shrink-0 md:hidden h-16 w-16 [&_svg]:size-10"
                 >
-                  <Menu className="size-9" />
+                  <Menu className="size-10" />
                   <span className="sr-only">Toggle navigation menu</span>
                 </Button>
               </SheetTrigger>
