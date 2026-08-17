@@ -45,11 +45,16 @@ interface NavbarProps {
 export default function Navbar({
   logo = <FluxoAILogo className="h-7 sm:h-8 w-auto text-foreground" />,
   name = "",
-  homeUrl = "#",
+  homeUrl = "/",
   mobileLinks = [
-    { text: "Servicios", href: "#servicios" },
-    { text: "Proyectos", href: "#proyectos" },
-    { text: "Contacto", href: "#contacto" },
+    { text: "Inicio", href: "/" },
+    { text: "Tiendas Online (E-commerce)", href: "/servicios/ecommerce" },
+    { text: "Páginas Web", href: "/servicios/paginas-web" },
+    { text: "Eliminación de Virus & Seguridad", href: "/servicios/eliminacion-virus" },
+    { text: "Software a Medida", href: "/servicios/software-a-medida" },
+    { text: "Automatización con IA", href: "/servicios/automatizacion-ia" },
+    { text: "Integraciones", href: "/servicios/integraciones" },
+    { text: "Contacto", href: "/#contacto" },
   ],
   actions = [
     {

@@ -14,6 +14,7 @@ interface ItemProps {
   title: string;
   description: string;
   icon: ReactNode;
+  href?: string;
   variant?: "default" | "glow-brand";
 }
 
@@ -29,6 +30,7 @@ const DEFAULT_ITEMS: ItemProps[] = [
     description:
       "Sitios, landing pages y paneles a medida, construidos desde cero para lo que tu negocio realmente necesita mostrar o gestionar — no una plantilla genérica ni un builder de arrastrar y soltar.",
     icon: <GlobeIcon className="size-5 stroke-[1.5]" />,
+    href: "/servicios/paginas-web",
     variant: "default",
   },
   {
@@ -36,6 +38,7 @@ const DEFAULT_ITEMS: ItemProps[] = [
     description:
       "Asistentes conectados a WhatsApp o Telegram que responden con la información real de tu negocio — catálogos, inventario, procedimientos — usando búsqueda semántica en vez de respuestas genéricas.",
     icon: <BotIcon className="size-5 stroke-[1.5]" />,
+    href: "/servicios/automatizacion-ia",
     variant: "glow-brand",
   },
   {
@@ -43,6 +46,7 @@ const DEFAULT_ITEMS: ItemProps[] = [
     description:
       "Flujos que conectan tus herramientas — Drive, formularios, bases de datos, mensajería — para que la información se mueva sola entre sistemas sin que nadie tenga que copiarla a mano.",
     icon: <ArrowLeftRightIcon className="size-5 stroke-[1.5]" />,
+    href: "/servicios/integraciones",
     variant: "default",
   },
   {
@@ -50,6 +54,7 @@ const DEFAULT_ITEMS: ItemProps[] = [
     description:
       "Aplicaciones internas — puntos de venta, control de asistencia, paneles administrativos — diseñadas para cómo tu equipo trabaja de verdad, no ajustadas a la fuerza a una plantilla genérica.",
     icon: <CodeXmlIcon className="size-5 stroke-[1.5]" />,
+    href: "/servicios/software-a-medida",
     variant: "glow-brand",
   },
 ];
@@ -99,9 +104,12 @@ export default function Items({
                     </p>
                   </div>
                   <div className="relative z-10 pt-2 mt-auto">
-                    <Button className="w-full bg-white text-black hover:bg-neutral-200 font-semibold cursor-pointer shadow-md transition-colors h-10 rounded-xl">
+                    <a
+                      href={item.href || "#servicios"}
+                      className="flex w-full items-center justify-center rounded-xl bg-white text-black hover:bg-neutral-200 font-semibold cursor-pointer shadow-md transition-colors h-10 px-4 text-sm"
+                    >
                       Más información
-                    </Button>
+                    </a>
                   </div>
                 </div>
               );

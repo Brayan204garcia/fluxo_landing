@@ -63,40 +63,40 @@ export default function Navigation({
   ],
   components = [
     {
-      title: "Agentes de IA",
-      href: "#servicios",
+      title: "Tiendas Online",
+      href: "/servicios/ecommerce",
       description:
-        "Bots conversacionales y asistentes inteligentes integrados con WhatsApp y modelos de lenguaje.",
+        "E-commerce completo con pagos en línea PSE, Nequi y panel administrativo.",
     },
     {
-      title: "Desarrollo Web",
-      href: "#servicios",
+      title: "Páginas Web",
+      href: "/servicios/paginas-web",
       description:
-        "Creación de aplicaciones web modernas, rápidas y totalmente adaptables.",
+        "Sitios corporativos y landing pages de alta conversión optimizadas para SEO.",
     },
     {
-      title: "Sistemas Cloud",
-      href: "#servicios",
+      title: "Eliminación de Virus",
+      href: "/servicios/eliminacion-virus",
       description:
-        "Infraestructura escalable y almacenamiento seguro para empresas.",
+        "Servicio técnico y limpieza profunda de computadores en Barrancabermeja y remoto.",
+    },
+    {
+      title: "Software a Medida",
+      href: "/servicios/software-a-medida",
+      description:
+        "Sistemas internos, puntos de venta y control administrativo sin licencias mensuales.",
+    },
+    {
+      title: "Automatización con IA",
+      href: "/servicios/automatizacion-ia",
+      description:
+        "Chatbots inteligentes en WhatsApp y flujos de IA con tu catálogo de productos.",
     },
     {
       title: "Integraciones API",
-      href: "#servicios",
+      href: "/servicios/integraciones",
       description:
-        "Conexión de sistemas empresariales, pasarelas de pago y servicios de mensajería.",
-    },
-    {
-      title: "Apps Móviles",
-      href: "#servicios",
-      description:
-        "Soluciones móviles multiplataforma orientadas a alta productividad.",
-    },
-    {
-      title: "Soporte y Mantenimiento",
-      href: "#contacto",
-      description:
-        "Asistencia técnica continua, monitoreo de disponibilidad y optimización.",
+        "Conexión de Google Sheets, formularios, bases de datos y mensajería.",
     },
   ],
   logo = <FluxoAILogo className="h-6 w-auto text-foreground" />,
@@ -105,28 +105,28 @@ export default function Navigation({
   logoHref = "#servicios",
   introItems = [
     {
-      title: "Desarrollo web",
-      href: "#servicios",
+      title: "Páginas Web",
+      href: "/servicios/paginas-web",
       description:
-        "Sitios, landing pages y paneles a medida construidos desde cero para las necesidades reales de tu negocio.",
+        "Sitios, landing pages y portales a medida optimizados para posicionar en Google.",
     },
     {
-      title: "Integraciones con IA",
-      href: "#servicios",
+      title: "Tiendas Online (E-commerce)",
+      href: "/servicios/ecommerce",
       description:
-        "Asistentes conectados a WhatsApp o Telegram con respuestas sobre la información real de tu negocio.",
+        "Tu tienda virtual con catálogo, carrito y pagos PSE, Nequi y tarjetas.",
     },
     {
-      title: "Automatización de procesos",
-      href: "#servicios",
+      title: "Eliminación de Virus & Seguridad",
+      href: "/servicios/eliminacion-virus",
       description:
-        "Flujos que conectan tus herramientas (Drive, formularios, BD) para mover información sin trabajo manual.",
+        "Limpieza profunda de malware, ransomware y optimización de computadores.",
     },
     {
-      title: "Software a medida",
-      href: "#servicios",
+      title: "Automatización con IA",
+      href: "/servicios/automatizacion-ia",
       description:
-        "Aplicaciones internas, puntos de venta y portales de gestión diseñados a la medida de tu equipo.",
+        "Asistentes inteligentes y chatbots conectados a WhatsApp con datos de tu negocio.",
     },
   ],
 }: NavigationProps) {
