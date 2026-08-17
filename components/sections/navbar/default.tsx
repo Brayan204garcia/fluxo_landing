@@ -48,12 +48,9 @@ export default function Navbar({
   homeUrl = "/",
   mobileLinks = [
     { text: "Inicio", href: "/" },
-    { text: "Tiendas Online (E-commerce)", href: "/servicios/ecommerce" },
     { text: "Páginas Web", href: "/servicios/paginas-web" },
-    { text: "Eliminación de Virus & Seguridad", href: "/servicios/eliminacion-virus" },
-    { text: "Software a Medida", href: "/servicios/software-a-medida" },
-    { text: "Automatización con IA", href: "/servicios/automatizacion-ia" },
-    { text: "Integraciones", href: "/servicios/integraciones" },
+    { text: "Tiendas Online & E-commerce", href: "/servicios/ecommerce" },
+    { text: "Eliminación de Virus & Mantenimiento", href: "/servicios/eliminacion-virus" },
     { text: "Contacto", href: "/#contacto" },
   ],
   actions = [

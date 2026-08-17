@@ -1,12 +1,10 @@
 import {
-  ArrowLeftRightIcon,
-  BotIcon,
-  CodeXmlIcon,
   GlobeIcon,
+  ShieldCheckIcon,
+  ShoppingCartIcon,
 } from "lucide-react";
 import { ReactNode } from "react";
 
-import { Button } from "../../ui/button";
 import { Section } from "../../ui/section";
 import { cn } from "@/lib/utils";
 
@@ -26,52 +24,44 @@ interface ItemsProps {
 
 const DEFAULT_ITEMS: ItemProps[] = [
   {
-    title: "Desarrollo web",
+    title: "Páginas Web Profesionales",
     description:
-      "Sitios, landing pages y paneles a medida, construidos desde cero para lo que tu negocio realmente necesita mostrar o gestionar — no una plantilla genérica ni un builder de arrastrar y soltar.",
+      "Sitios web modernos, rápidos y optimizados para Google. Landing pages y sitios corporativos diseñados a medida para generar clientes reales.",
     icon: <GlobeIcon className="size-5 stroke-[1.5]" />,
     href: "/servicios/paginas-web",
     variant: "default",
   },
   {
-    title: "Integraciones con IA",
+    title: "Tiendas Online & E-commerce",
     description:
-      "Asistentes conectados a WhatsApp o Telegram que responden con la información real de tu negocio — catálogos, inventario, procedimientos — usando búsqueda semántica en vez de respuestas genéricas.",
-    icon: <BotIcon className="size-5 stroke-[1.5]" />,
-    href: "/servicios/automatizacion-ia",
+      "Tu tienda virtual lista para vender 24/7 sin pagar comisiones. Catálogo autogestionable, carrito y pagos directos por PSE, Nequi y tarjetas.",
+    icon: <ShoppingCartIcon className="size-5 stroke-[1.5]" />,
+    href: "/servicios/ecommerce",
     variant: "glow-brand",
   },
   {
-    title: "Automatización de procesos",
+    title: "Eliminación de Virus & Mantenimiento",
     description:
-      "Flujos que conectan tus herramientas — Drive, formularios, bases de datos, mensajería — para que la información se mueva sola entre sistemas sin que nadie tenga que copiarla a mano.",
-    icon: <ArrowLeftRightIcon className="size-5 stroke-[1.5]" />,
-    href: "/servicios/integraciones",
+      "Diagnóstico, desinfección profunda de malware y ransomware, optimización de velocidad y mantenimiento técnico a domicilio o remoto.",
+    icon: <ShieldCheckIcon className="size-5 stroke-[1.5]" />,
+    href: "/servicios/eliminacion-virus",
     variant: "default",
-  },
-  {
-    title: "Software a medida",
-    description:
-      "Aplicaciones internas — puntos de venta, control de asistencia, paneles administrativos — diseñadas para cómo tu equipo trabaja de verdad, no ajustadas a la fuerza a una plantilla genérica.",
-    icon: <CodeXmlIcon className="size-5 stroke-[1.5]" />,
-    href: "/servicios/software-a-medida",
-    variant: "glow-brand",
   },
 ];
 
 export default function Items({
-  title = "Cuatro frentes, un solo responsable de punta a punta",
+  title = "Servicios digitales y soporte técnico para tu negocio",
   items = DEFAULT_ITEMS,
   className,
 }: ItemsProps) {
   return (
-    <Section className={className}>
+    <Section className={className} id="servicios">
       <div className="max-w-container mx-auto flex flex-col items-center gap-12 sm:gap-16">
         <h2 className="max-w-[760px] text-center text-3xl leading-tight font-semibold sm:text-5xl sm:leading-tight">
           {title}
         </h2>
         {items !== false && items.length > 0 && (
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {items.map((item) => {
               const isGlowBrand = item.variant === "glow-brand";
               return (

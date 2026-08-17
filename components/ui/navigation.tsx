@@ -63,70 +63,46 @@ export default function Navigation({
   ],
   components = [
     {
-      title: "Tiendas Online",
-      href: "/servicios/ecommerce",
-      description:
-        "E-commerce completo con pagos en línea PSE, Nequi y panel administrativo.",
-    },
-    {
-      title: "Páginas Web",
+      title: "Páginas Web Profesionales",
       href: "/servicios/paginas-web",
       description:
-        "Sitios corporativos y landing pages de alta conversión optimizadas para SEO.",
+        "Sitios corporativos y landing pages de alta conversión optimizadas para Google.",
     },
     {
-      title: "Eliminación de Virus",
+      title: "Tiendas Online & E-commerce",
+      href: "/servicios/ecommerce",
+      description:
+        "Tienda virtual completa con catálogo, carrito y pagos PSE, Nequi y Wompi.",
+    },
+    {
+      title: "Eliminación de Virus & Mantenimiento",
       href: "/servicios/eliminacion-virus",
       description:
-        "Servicio técnico y limpieza profunda de computadores en Barrancabermeja y remoto.",
-    },
-    {
-      title: "Software a Medida",
-      href: "/servicios/software-a-medida",
-      description:
-        "Sistemas internos, puntos de venta y control administrativo sin licencias mensuales.",
-    },
-    {
-      title: "Automatización con IA",
-      href: "/servicios/automatizacion-ia",
-      description:
-        "Chatbots inteligentes en WhatsApp y flujos de IA con tu catálogo de productos.",
-    },
-    {
-      title: "Integraciones API",
-      href: "/servicios/integraciones",
-      description:
-        "Conexión de Google Sheets, formularios, bases de datos y mensajería.",
+        "Limpieza profunda de virus/malware, formateo, aceleración y mantenimiento de computadores.",
     },
   ],
   logo = <FluxoAILogo className="h-6 w-auto text-foreground" />,
   logoTitle = "",
-  logoDescription = "Soluciones de ingeniería de software a medida y agentes de Inteligencia Artificial para tu empresa.",
-  logoHref = "#servicios",
+  logoDescription = "Desarrollo de páginas web, tiendas online y soporte técnico profesional.",
+  logoHref = "/#servicios",
   introItems = [
     {
       title: "Páginas Web",
       href: "/servicios/paginas-web",
       description:
-        "Sitios, landing pages y portales a medida optimizados para posicionar en Google.",
+        "Sitios web y landing pages a medida optimizados para posicionar en Google.",
     },
     {
       title: "Tiendas Online (E-commerce)",
       href: "/servicios/ecommerce",
       description:
-        "Tu tienda virtual con catálogo, carrito y pagos PSE, Nequi y tarjetas.",
+        "Tu tienda virtual con catálogo, carrito y pagos directos por PSE y Nequi.",
     },
     {
-      title: "Eliminación de Virus & Seguridad",
+      title: "Eliminación de Virus & Mantenimiento",
       href: "/servicios/eliminacion-virus",
       description:
-        "Limpieza profunda de malware, ransomware y optimización de computadores.",
-    },
-    {
-      title: "Automatización con IA",
-      href: "/servicios/automatizacion-ia",
-      description:
-        "Asistentes inteligentes y chatbots conectados a WhatsApp con datos de tu negocio.",
+        "Desinfección de malware, optimización y mantenimiento técnico a domicilio o remoto.",
     },
   ],
 }: NavigationProps) {
