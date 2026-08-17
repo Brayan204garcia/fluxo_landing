@@ -24,25 +24,17 @@ interface ItemsProps {
 
 const DEFAULT_ITEMS: ItemProps[] = [
   {
-    title: "Páginas Web Profesionales",
+    title: "Páginas Web & Tiendas Online (E-commerce)",
     description:
-      "Sitios web modernos, rápidos y optimizados para Google. Landing pages y sitios corporativos diseñados a medida para generar clientes reales.",
+      "Sitios corporativos, landing pages de alta conversión y tiendas virtuales con catálogo y pagos PSE, Nequi y Wompi. Posicionamiento SEO en Google y diseño adaptado a celulares.",
     icon: <GlobeIcon className="size-5 stroke-[1.5]" />,
     href: "/servicios/paginas-web",
-    variant: "default",
-  },
-  {
-    title: "Tiendas Online & E-commerce",
-    description:
-      "Tu tienda virtual lista para vender 24/7 sin pagar comisiones. Catálogo autogestionable, carrito y pagos directos por PSE, Nequi y tarjetas.",
-    icon: <ShoppingCartIcon className="size-5 stroke-[1.5]" />,
-    href: "/servicios/ecommerce",
     variant: "glow-brand",
   },
   {
     title: "Eliminación de Virus & Mantenimiento",
     description:
-      "Diagnóstico, desinfección profunda de malware y ransomware, optimización de velocidad y mantenimiento técnico a domicilio o remoto.",
+      "Desinfección profunda de malware, ransomware y virus. Optimización de rendimiento, aceleración y mantenimiento preventivo/correctivo para computadores y portátiles.",
     icon: <ShieldCheckIcon className="size-5 stroke-[1.5]" />,
     href: "/servicios/eliminacion-virus",
     variant: "default",
@@ -61,7 +53,7 @@ export default function Items({
           {title}
         </h2>
         {items !== false && items.length > 0 && (
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 max-w-[960px] w-full">
             {items.map((item) => {
               const isGlowBrand = item.variant === "glow-brand";
               return (

@@ -49,78 +49,43 @@ export interface Service {
 export const services: Service[] = [
   {
     slug: 'paginas-web',
-    name: 'Páginas Web Profesionales',
-    tagline: 'Tu presencia en internet que genera confianza y clientes',
-    description: 'Sitios web profesionales que posicionan tu negocio en Google y convierten visitantes en clientes. Diseño moderno, ultra rápido y adaptado a celulares.',
-    longDescription: 'Diseñamos y desarrollamos sitios web profesionales que representan tu negocio exactamente como quieres: landing pages de alto impacto, sitios corporativos y portafolios optimizados para Google.',
+    name: 'Páginas Web & Tiendas Online (E-commerce)',
+    tagline: 'Páginas web profesionales y tiendas online listas para vender',
+    description: 'Diseño y desarrollo de páginas web, landing pages y tiendas online con catálogo, carrito y pagos PSE, Nequi y Wompi. Posicionamiento en Google y 100% adaptadas a celulares.',
+    longDescription: 'Construimos la presencia digital de tu negocio desde cero: sitios corporativos para generar clientes y tiendas virtuales para vender productos con pasarelas de pago colombianas sin pagar comisiones por venta.',
     iconName: 'Globe',
     color: 'purple',
-    badge: 'Desarrollo Web',
+    badge: 'Desarrollo Web & E-commerce',
     features: [
-      { title: 'Diseño personalizado', description: 'Cada sitio es único y a la medida de tu marca, sin plantillas genéricas.' },
-      { title: 'Optimizado para Google (SEO)', description: 'Implementamos las mejores prácticas de SEO local para aparecer en los primeros resultados.' },
-      { title: 'Formulario y WhatsApp directo', description: 'Recibe solicitudes de cotización directo a tu WhatsApp y correo electrónico.' },
-      { title: 'Mapa de ubicación interactivo', description: 'Integración con Google Maps para que tus clientes te encuentren con facilidad.' },
-      { title: 'Velocidad de carga ultra rápida', description: 'Sitios optimizados para cargar en menos de 2 segundos en cualquier celular.' },
-      { title: 'Dominio y hosting configurados', description: 'Te asesoramos y dejamos todo configurado para que tu sitio esté en línea sin complicaciones.' }
+      { title: 'Diseño web personalizado', description: 'Sitios y tiendas a la medida de tu marca, sin plantillas genéricas.' },
+      { title: 'Catálogo de productos y carrito de compras', description: 'Tienda virtual autogestionable para subir productos, variantes y controlar stock.' },
+      { title: 'Pagos en línea (PSE, Nequi, Wompi, Tarjetas)', description: 'Integración de pasarelas de pago colombianas seguras y cobros contra entrega.' },
+      { title: 'Optimizado para Google (SEO Local)', description: 'Estrategia SEO para que aparezcas cuando busquen tus productos o servicios en Barrancabermeja.' },
+      { title: 'WhatsApp y formularios integrados', description: 'Notificaciones instantáneas de compras y cotizaciones directo a tu teléfono.' },
+      { title: 'Velocidad ultra rápida y responsive', description: 'Carga en menos de 2 segundos optimizada para compradores desde el celular.' }
     ],
     benefits: [
-      { title: 'Clientes las 24 horas', description: 'Tu página web trabaja para ti mientras tú atiendes el negocio.' },
-      { title: 'Mayor credibilidad y ventas', description: 'Un sitio profesional proyecta confianza y hace que los clientes te elijan sobre la competencia.' },
-      { title: 'Posicionamiento en Google', description: 'Aparece cuando personas en Barrancabermeja y Colombia busquen tus servicios.' }
+      { title: 'Ventas y clientes 24/7', description: 'Tu negocio y catálogo están disponibles a cualquier hora, sin intermediarios ni comisiones.' },
+      { title: 'Mayor credibilidad y posicionamiento', description: 'Un sitio profesional genera confianza inmediata y posiciona tu marca en Google.' },
+      { title: 'Control total de tu negocio', description: 'Panel fácil para administrar productos, precios, pedidos y clientes sin saber programar.' }
     ],
     faq: [
-      { question: '¿Cuánto dura el desarrollo de una página web?', answer: 'Una landing page toma entre 5 y 7 días hábiles. Un sitio corporativo completo entre 2 y 3 semanas.' },
-      { question: '¿La página se adapta a celulares y computadores?', answer: 'Sí, el 100% de nuestros diseños son responsive y están optimizados principalmente para móviles.' },
-      { question: '¿Puedo actualizar los contenidos de mi página?', answer: 'Sí, podemos entregarte paneles autogestionables para que cambies textos e imágenes fácilmente.' },
-      { question: '¿Incluye soporte y mantenimiento?', answer: 'Ofrecemos soporte continuo y planes de mantenimiento preventivo y de seguridad.' }
+      { question: '¿Puedo tener una página web corporativa o una tienda online?', answer: 'Sí, adaptamos el proyecto a tu necesidad: desde landing pages y sitios corporativos hasta tiendas e-commerce completas con pagos en línea.' },
+      { question: '¿Cuánto tiempo tarda el desarrollo?', answer: 'Una landing page toma de 5 a 7 días hábiles. Una tienda online o sitio corporativo completo entre 2 y 3 semanas.' },
+      { question: '¿Cobran comisiones por ventas en la tienda?', answer: 'No. El 100% de tus ventas es tuyo. No cobramos comisiones ni tarifas por transacción.' },
+      { question: '¿Puedo editar los contenidos y productos yo mismo?', answer: 'Sí, te entregamos un panel autogestionable y te capacitamos para que subas productos y edites textos fácilmente.' }
     ],
-    cta: { title: '¿Quieres tu página web profesional?', whatsappMessage: '¡Hola! Me interesa crear una página web profesional para mi negocio en Barrancabermeja.' },
+    cta: { title: '¿Quieres tu página web o tienda online?', whatsappMessage: '¡Hola! Me interesa cotizar una página web / tienda online para mi negocio en Barrancabermeja.' },
     seo: {
-      title: 'Páginas Web Profesionales en Barrancabermeja | Fluxo AI',
-      description: 'Diseño y desarrollo de páginas web profesionales en Barrancabermeja. Sitios rápidos, optimizados para Google y adaptados a celular. Cotiza gratis.',
-      keywords: ['páginas web Barrancabermeja', 'diseño web Barrancabermeja', 'crear página web Santander', 'sitio web profesional Colombia']
-    }
-  },
-  {
-    slug: 'ecommerce',
-    name: 'Tiendas Online & E-commerce',
-    tagline: 'Tu tienda virtual lista para vender desde el primer día',
-    description: 'Vende tus productos en internet sin pagar comisiones por venta. Tiendas completas con catálogo, carrito de compras y pasarelas de pago colombianas.',
-    longDescription: 'Construimos tu tienda online con catálogo administrable, carrito de compras, pagos en línea por PSE, Nequi, Wompi y tarjetas, además de panel de control de inventario.',
-    iconName: 'ShoppingCart',
-    color: 'blue',
-    badge: 'E-commerce',
-    features: [
-      { title: 'Catálogo de productos autogestionable', description: 'Sube productos, fotos, precios, variantes (tallas, colores) y controla tu stock en tiempo real.' },
-      { title: 'Carrito de compras y Checkout fluido', description: 'Proceso de compra optimizado para que tus clientes completen pedidos sin fricciones.' },
-      { title: 'Pagos en línea (PSE, Nequi, Wompi, Tarjetas)', description: 'Integración oficial con pasarelas de pago seguras y opciones de pago contra entrega.' },
-      { title: 'Panel de administración fácil', description: 'Gestiona pedidos, clientes e inventario desde tu computador o celular sin saber programar.' },
-      { title: 'Notificaciones automáticas por WhatsApp', description: 'Alertas automáticas de pedidos nuevos para ti y confirmación instantánea a tu cliente.' },
-      { title: '100% Adaptada a celulares', description: 'Diseño ultra rápido para compras ágiles desde cualquier teléfono móvil.' }
-    ],
-    benefits: [
-      { title: 'Ventas 24/7 sin intermediarios', description: 'Tu tienda recibe pedidos a cualquier hora sin pagar comisiones a plataformas externas.' },
-      { title: 'Control total de tus ganancias', description: 'Tú administras tus promociones, precios y clientes sin intermediarios.' },
-      { title: 'Envíos a todo el país', description: 'Configura tarifas de envío locales o nacionales y vende más allá de Barrancabermeja.' }
-    ],
-    faq: [
-      { question: '¿Cuánto tiempo tarda en estar lista la tienda?', answer: 'Entre 2 y 4 semanas según la cantidad de productos y pasarelas a configurar.' },
-      { question: '¿Necesito conocimientos técnicos para operarla?', answer: 'No. Te capacitamos para que administres productos, precios y pedidos fácilmente.' },
-      { question: '¿Qué pasarelas de pago se pueden conectar?', answer: 'Wompi (Bancolombia), PSE, Nequi, tarjetas de crédito/débito y pagos contra entrega.' },
-      { question: '¿Cobran comisiones sobre mis ventas?', answer: 'No, no cobramos comisiones. El 100% de tus ventas es tuyo.' }
-    ],
-    cta: { title: '¿Listo para vender tus productos por internet?', whatsappMessage: '¡Hola! Me interesa crear una tienda online / e-commerce para mi negocio.' },
-    seo: {
-      title: 'Tiendas Online y E-commerce en Barrancabermeja | Fluxo AI',
-      description: 'Creamos tu tienda online con carrito de compras, pagos PSE/Nequi/Wompi y panel de administración. Vende en internet desde Barrancabermeja, Santander.',
-      keywords: ['tienda online Barrancabermeja', 'ecommerce Barrancabermeja', 'crear tienda virtual Colombia', 'pagos PSE Nequi Colombia']
+      title: 'Páginas Web y Tiendas Online E-commerce en Barrancabermeja | Fluxo AI',
+      description: 'Diseño de páginas web profesionales y tiendas online e-commerce en Barrancabermeja. Pagos PSE, Nequi, SEO en Google y diseño a medida. Cotiza gratis.',
+      keywords: ['páginas web Barrancabermeja', 'tiendas online Barrancabermeja', 'ecommerce Barrancabermeja', 'diseño web Santander', 'crear tienda virtual Colombia']
     }
   },
   {
     slug: 'eliminacion-virus',
     name: 'Eliminación de Virus & Mantenimiento',
-    tagline: 'Tu computador limpio, protegido y como nuevo',
+    tagline: 'Tu computador limpio, protegido y optimizado como nuevo',
     description: 'Eliminamos virus, malware y ransomware de tus equipos. Mantenimiento preventivo, correctivo y optimización de computadores en Barrancabermeja y remoto.',
     longDescription: 'Diagnóstico profundo, desinfección total de amenazas digitales, limpieza de archivos basura y optimización de hardware/software para computadores y portátiles.',
     iconName: 'ShieldCheck',

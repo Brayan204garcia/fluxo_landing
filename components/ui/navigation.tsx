@@ -63,22 +63,16 @@ export default function Navigation({
   ],
   components = [
     {
-      title: "Páginas Web Profesionales",
+      title: "Páginas Web & Tiendas Online (E-commerce)",
       href: "/servicios/paginas-web",
       description:
-        "Sitios corporativos y landing pages de alta conversión optimizadas para Google.",
-    },
-    {
-      title: "Tiendas Online & E-commerce",
-      href: "/servicios/ecommerce",
-      description:
-        "Tienda virtual completa con catálogo, carrito y pagos PSE, Nequi y Wompi.",
+        "Sitios web corporativos, landing pages y tiendas virtuales con pagos PSE, Nequi y Wompi.",
     },
     {
       title: "Eliminación de Virus & Mantenimiento",
       href: "/servicios/eliminacion-virus",
       description:
-        "Limpieza profunda de virus/malware, formateo, aceleración y mantenimiento de computadores.",
+        "Desinfección de malware, optimización de velocidad y mantenimiento técnico para computadores.",
     },
   ],
   logo = <FluxoAILogo className="h-6 w-auto text-foreground" />,
@@ -87,22 +81,16 @@ export default function Navigation({
   logoHref = "/#servicios",
   introItems = [
     {
-      title: "Páginas Web",
+      title: "Páginas Web & E-commerce",
       href: "/servicios/paginas-web",
       description:
-        "Sitios web y landing pages a medida optimizados para posicionar en Google.",
-    },
-    {
-      title: "Tiendas Online (E-commerce)",
-      href: "/servicios/ecommerce",
-      description:
-        "Tu tienda virtual con catálogo, carrito y pagos directos por PSE y Nequi.",
+        "Sitios corporativos y tiendas online listas para vender con pagos directos en Colombia.",
     },
     {
       title: "Eliminación de Virus & Mantenimiento",
       href: "/servicios/eliminacion-virus",
       description:
-        "Desinfección de malware, optimización y mantenimiento técnico a domicilio o remoto.",
+        "Limpieza profunda de amenazas, aceleración y mantenimiento a domicilio o remoto.",
     },
   ],
 }: NavigationProps) {
