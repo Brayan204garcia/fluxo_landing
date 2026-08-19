@@ -2,7 +2,6 @@ import Image from "next/image";
 import { ReactNode } from "react";
 import { CheckCircle2 } from "lucide-react";
 
-import heroInicioImg from "@/public/hero_inicio.png";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { LinkButton, type LinkButtonProps } from "../../ui/link-button";
@@ -99,8 +98,10 @@ export default function Hero({
             {/* Container with smooth gradient mask */}
             <div className="relative overflow-hidden rounded-2xl [mask-image:linear-gradient(to_bottom,black_85%,transparent_100%)]">
               <Image
-                src={heroInicioImg}
+                src="/hero_inicio.png"
                 alt="Fluxo AI - Desarrollo de Software, Automatización y Páginas Web en Barrancabermeja"
+                width={1200}
+                height={800}
                 className="w-full h-auto object-contain drop-shadow-2xl"
                 priority
               />
