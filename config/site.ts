@@ -1,11 +1,11 @@
 export const siteConfig = {
-  name: "Fluxo AI | Páginas Web, Software & Automatización IA en Barrancabermeja",
+  name: "Fluxo AI | Software a Medida, Automatización IA & Páginas Web en Barrancabermeja",
   shortName: "Fluxo AI",
   url: "https://bryansoftware.com",
   getStartedUrl: "#contacto",
   ogImage: "/og.jpg",
   description:
-    "Desarrollo de páginas web profesionales, tiendas online (e-commerce), software a medida y automatización de procesos con Inteligencia Artificial en Barrancabermeja y Santander.",
+    "Desarrollo de software a medida, automatización de procesos con Inteligencia Artificial, agentes para WhatsApp, tiendas online y páginas web en Barrancabermeja y Santander.",
   version: "v1.0",
   location: {
     city: "Barrancabermeja",
