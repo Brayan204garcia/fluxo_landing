@@ -47,7 +47,7 @@ export const siteConfig = {
     "Fluxo AI Barrancabermeja",
   ],
   links: {
-    email: "mailto:contacto@bryan.com",
+    email: "mailto:brayan@fluxoai.lat",
     whatsapp: "https://wa.me/573134284953?text=%C2%A1Hola!%20Quisiera%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20tus%20servicios%20en%20Barrancabermeja.",
   },
   whatsapp: {

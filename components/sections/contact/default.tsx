@@ -100,11 +100,11 @@ export default function Contact({ className }: ContactProps) {
           
           <div className="flex flex-col gap-3 pt-2">
             <a
-              href="mailto:contacto@bryan.com"
+              href="mailto:brayan@fluxoai.lat"
               className="inline-flex items-center gap-2 text-sm font-semibold text-brand hover:underline"
             >
               <MailIcon className="size-4" />
-              contacto@bryan.com
+              brayan@fluxoai.lat
             </a>
           </div>
         </div>

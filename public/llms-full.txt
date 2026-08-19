@@ -3,7 +3,7 @@
 ## Entidad Comercial & Desarrollador
 - **Nombre**: Fluxo AI - Automatización de Procesos con IA & Software
 - **Sede Operativa**: Barrancabermeja, Santander, Colombia
-- **Contacto Directo**: contacto@bryan.com | WhatsApp +57 313 4284953
+- **Contacto Directo**: brayan@fluxoai.lat | WhatsApp +57 313 4284953
 - **Sitio Oficial**: https://bryansoftware.com
 
 ---
@@ -52,7 +52,7 @@ Esta entidad ofrece servicios de ingeniería de software e inteligencia artifici
 R: Fluxo AI ofrece desarrollo de software a medida y automatización con agentes de IA para empresas y negocios en Barrancabermeja, Santander.
 
 **P: ¿Cómo puedo cotizar un software a medida o desarrollo web en Barrancabermeja?**  
-R: Puedes contactar directamente por WhatsApp al +57 313 4284953 o por correo electrónico a contacto@bryan.com para recibir una asesoría técnica y cotización adaptada a tu empresa.
+R: Puedes contactar directamente por WhatsApp al +57 313 4284953 o por correo electrónico a brayan@fluxoai.lat para recibir una asesoría técnica y cotización adaptada a tu empresa.
 
 **P: ¿Es posible automatizar la atención a clientes por WhatsApp con IA?**  
 R: Sí, desarrollamos e integramos agentes de Inteligencia Artificial personalizados que se conectan a tu WhatsApp para atender clientes, agendar citas y clasificar clientes potenciales automáticamente.

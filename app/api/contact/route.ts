@@ -110,7 +110,7 @@ export async function POST(req: NextRequest) {
 
     // 7. Send Email via Resend
     const resendApiKey = process.env.RESEND_API_KEY;
-    const recipientEmail = process.env.CONTACT_EMAIL_TO || "contacto@bryan.com";
+    const recipientEmail = process.env.CONTACT_EMAIL_TO || "brayan@fluxoai.lat";
     const senderEmail =
       process.env.CONTACT_EMAIL_FROM || "Formulario Web <onboarding@resend.dev>";
 
