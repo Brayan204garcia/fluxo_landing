@@ -49,7 +49,7 @@ export function AIChatMockup({ className }: { className?: string }) {
     const queryText = (textOverride || input || placeholder).trim();
     if (!queryText) return;
 
-    const phoneNumber = siteConfig.whatsapp?.phoneNumber || "573001234567";
+    const phoneNumber = siteConfig.whatsapp?.phoneNumber || "573134284953";
     const cleanPhone = phoneNumber.replace(/[^0-9]/g, "");
     const fullMessage = `¡Hola! Tengo la siguiente consulta desde el Agente de IA:\n\n"${queryText}"`;
     const targetUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(fullMessage)}`;

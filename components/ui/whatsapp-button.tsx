@@ -15,7 +15,7 @@ export interface WhatsAppButtonProps {
 }
 
 export function WhatsAppButton({
-  phoneNumber = siteConfig.whatsapp?.phoneNumber || "573001234567",
+  phoneNumber = siteConfig.whatsapp?.phoneNumber || "573134284953",
   defaultMessage = siteConfig.whatsapp?.defaultMessage || "¡Hola! Quisiera obtener más información.",
   position = "bottom-right",
   className,
