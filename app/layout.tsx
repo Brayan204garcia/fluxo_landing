@@ -91,7 +91,6 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
-      { url: "/favicon.svg", type: "image/svg+xml" },
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
       { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
       { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
@@ -99,7 +98,6 @@ export const metadata: Metadata = {
     ],
     apple: [
       { url: "/apple-icon.png" },
-      { url: "/apple-touch-icon.png" },
       { url: "/apple-icon-180x180.png", sizes: "180x180" },
       { url: "/apple-icon-152x152.png", sizes: "152x152" },
       { url: "/apple-icon-144x144.png", sizes: "144x144" },
@@ -134,7 +132,7 @@ export default function RootLayout({
         alternateName: ["Fluxo AI", "Desarrollo Web Barrancabermeja", "Software & IA Barrancabermeja"],
         description: siteConfig.description,
         url: siteConfig.url,
-        logo: `${siteConfig.url}/favicon.svg`,
+        logo: `${siteConfig.url}/logos/fluxoai_logo.svg`,
         image: `${siteConfig.url}${siteConfig.ogImage}`,
         telephone: `+${siteConfig.whatsapp.phoneNumber}`,
         email: siteConfig.links.email.replace("mailto:", ""),

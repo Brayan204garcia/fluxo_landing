@@ -3,7 +3,7 @@ export const siteConfig = {
   shortName: "Fluxo AI",
   url: "https://bryansoftware.com",
   getStartedUrl: "#contacto",
-  ogImage: "/og.jpg",
+  ogImage: "/hero_inicio.png",
   description:
     "Desarrollo de software a medida, automatización de procesos con Inteligencia Artificial, agentes para WhatsApp, tiendas online y páginas web en Barrancabermeja y Santander.",
   version: "v1.0",
