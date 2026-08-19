@@ -125,27 +125,36 @@ export default function RootLayout({
               "@type": "Offer",
               itemOffered: {
                 "@type": "Service",
+                name: "Páginas Web y Tiendas Online (E-commerce)",
+                description:
+                  "Diseño y desarrollo de páginas web, landing pages y tiendas virtuales con catálogo y pagos PSE, Nequi y Wompi.",
+              },
+            },
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: "Integraciones con Inteligencia Artificial",
+                description:
+                  "Asistentes inteligentes para WhatsApp y Telegram con información real de tu negocio y búsqueda semántica.",
+              },
+            },
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: "Automatización de Procesos y Flujos de Trabajo",
+                description:
+                  "Conexión de herramientas y flujos automáticos entre Drive, formularios, bases de datos y mensajería.",
+              },
+            },
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
                 name: "Desarrollo de Software a Medida",
                 description:
-                  "Construcción de aplicaciones web, sistemas internos y plataformas a medida para empresas en Barrancabermeja.",
-              },
-            },
-            {
-              "@type": "Offer",
-              itemOffered: {
-                "@type": "Service",
-                name: "Automatización con Inteligencia Artificial y Agentes IA",
-                description:
-                  "Diseño e integración de agentes de IA, flujos automatizados de atención al cliente y optimización operativa.",
-              },
-            },
-            {
-              "@type": "Offer",
-              itemOffered: {
-                "@type": "Service",
-                name: "Integración de Sistemas e Infraestructura Digital",
-                description:
-                  "Conexión de APIs, desarrollo de backend y soluciones digitales avanzadas para empresas en Barrancabermeja.",
+                  "Construcción de aplicaciones web, sistemas internos, puntos de venta y paneles administrativos a medida.",
               },
             },
           ],

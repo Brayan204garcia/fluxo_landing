@@ -1,9 +1,5 @@
 import {
-  ArrowLeftRight,
-  Bot,
-  Code2,
   Globe,
-  ShieldCheck,
   ShoppingCart,
 } from 'lucide-react';
 import { type LucideIcon } from 'lucide-react';
@@ -51,7 +47,7 @@ export const services: Service[] = [
     slug: 'paginas-web',
     name: 'Páginas Web & Tiendas Online (E-commerce)',
     tagline: 'Páginas web profesionales y tiendas online listas para vender',
-    description: 'Diseño y desarrollo de páginas web, landing pages y tiendas online con catálogo, carrito y pagos PSE, Nequi y Wompi. Posicionamiento en Google y 100% adaptadas a celulares.',
+    description: 'Sitios corporativos, landing pages de alta conversión y tiendas virtuales con catálogo y pagos PSE, Nequi y Wompi. Posicionamiento SEO en Google y diseño adaptado a celulares.',
     longDescription: 'Construimos la presencia digital de tu negocio desde cero: sitios corporativos para generar clientes y tiendas virtuales para vender productos con pasarelas de pago colombianas sin pagar comisiones por venta.',
     iconName: 'Globe',
     color: 'purple',
@@ -80,41 +76,6 @@ export const services: Service[] = [
       title: 'Páginas Web y Tiendas Online E-commerce en Barrancabermeja | Fluxo AI',
       description: 'Diseño de páginas web profesionales y tiendas online e-commerce en Barrancabermeja. Pagos PSE, Nequi, SEO en Google y diseño a medida. Cotiza gratis.',
       keywords: ['páginas web Barrancabermeja', 'tiendas online Barrancabermeja', 'ecommerce Barrancabermeja', 'diseño web Santander', 'crear tienda virtual Colombia']
-    }
-  },
-  {
-    slug: 'eliminacion-virus',
-    name: 'Eliminación de Virus & Mantenimiento',
-    tagline: 'Tu computador limpio, protegido y optimizado como nuevo',
-    description: 'Eliminamos virus, malware y ransomware de tus equipos. Mantenimiento preventivo, correctivo y optimización de computadores en Barrancabermeja y remoto.',
-    longDescription: 'Diagnóstico profundo, desinfección total de amenazas digitales, limpieza de archivos basura y optimización de hardware/software para computadores y portátiles.',
-    iconName: 'ShieldCheck',
-    color: 'green',
-    badge: 'Seguridad & Mantenimiento',
-    features: [
-      { title: 'Análisis y desinfección profunda', description: 'Eliminación de virus, troyanos, ransomware, spyware, adware y secuestradores de navegador.' },
-      { title: 'Mantenimiento y optimización', description: 'Limpieza de temporales, registro, aceleración de arranque y optimización del sistema operativo.' },
-      { title: 'Instalación y configuración de antivirus', description: 'Protección confiable en tiempo real para evitar que tu equipo vuelva a infectarse.' },
-      { title: 'Recuperación y respaldo de archivos', description: 'Rescate de información importante, fotos y documentos en casos de fallos o virus.' },
-      { title: 'Mantenimiento preventivo y correctivo', description: 'Revisión de rendimiento, actualización de controladores y chequeo de salud de disco/RAM.' },
-      { title: 'Atención a domicilio o remota', description: 'Servicio en tu negocio/hogar en Barrancabermeja o conexión remota inmediata.' }
-    ],
-    benefits: [
-      { title: 'Rendimiento y velocidad recuperada', description: 'Tu computador arranca rápido, abre programas al instante y deja de congelarse.' },
-      { title: 'Archivos y datos 100% seguros', description: 'Tus contraseñas, cuentas bancarias e información personal quedan blindadas.' },
-      { title: 'Solución el mismo día con garantía', description: 'La mayoría de los servicios se completan el mismo día con garantía de satisfacción.' }
-    ],
-    faq: [
-      { question: '¿El servicio es a domicilio en Barrancabermeja?', answer: 'Sí, realizamos visitas a domicilio en Barrancabermeja y también soporte remoto seguro si el equipo tiene internet.' },
-      { question: '¿Mis archivos y fotos se borran durante la limpieza?', answer: 'No. Cuidamos y respaldamos tu información antes de cualquier procedimiento para garantizar su seguridad.' },
-      { question: '¿Cuánto tiempo tarda la revisión y mantenimiento?', answer: 'Normalmente entre 1 y 3 horas según el estado y la cantidad de archivos del equipo.' },
-      { question: '¿Ofrecen garantía por el servicio?', answer: 'Sí, garantizamos que el equipo quede libre de amenazas y optimizado. Si tienes dudas posteriores, te asistimos sin costo.' }
-    ],
-    cta: { title: '¿Tu computador está lento, bloqueado o con virus?', whatsappMessage: '¡Hola! Necesito servicio de eliminación de virus y mantenimiento para mi computador en Barrancabermeja.' },
-    seo: {
-      title: 'Eliminación de Virus y Mantenimiento de Computadores en Barrancabermeja | Fluxo AI',
-      description: 'Eliminación de virus, malware y mantenimiento de computadores en Barrancabermeja. Servicio a domicilio y remoto. Equipos rápidos y limpios.',
-      keywords: ['eliminacion virus Barrancabermeja', 'mantenimiento computadores Barrancabermeja', 'tecnico computadores Barrancabermeja', 'reparacion computadores Santander']
     }
   }
 ];

@@ -6,7 +6,6 @@ import {
   AlertCircleIcon,
   Loader2Icon,
   MailIcon,
-  MessageCircleIcon,
   SendIcon,
 } from "lucide-react";
 
@@ -90,17 +89,12 @@ export default function Contact({ className }: ContactProps) {
     <Section id="contacto" className={className}>
       <div className="mx-auto grid max-w-6xl items-start gap-8 px-4 md:grid-cols-[0.85fr_1.15fr] md:gap-12">
         <div className="flex flex-col gap-5 text-left">
-          <div className="flex size-10 items-center justify-center rounded-lg bg-brand/10 text-brand ring-1 ring-brand/25">
-            <MessageCircleIcon className="size-5" />
-          </div>
           <div className="space-y-3">
             <h2 className="text-3xl font-semibold text-foreground sm:text-4xl">
-              Hablemos de lo que quieres automatizar
+              Hablemos de tu proyecto
             </h2>
             <p className="max-w-xl text-base font-medium leading-relaxed text-muted-foreground">
-              Cuéntame qué proceso quieres mejorar y te responderé con una ruta
-              clara para diseñar agentes, integraciones o sistemas internos para
-              tu empresa.
+              Cuéntame qué necesitas para tu página web, tienda online o servicio técnico y te responderé con una propuesta clara y cotización a la medida de tu negocio.
             </p>
           </div>
           
@@ -132,8 +126,7 @@ export default function Contact({ className }: ContactProps) {
               Solicita una propuesta
             </h3>
             <p className="text-muted-foreground max-w-[360px] text-sm">
-              Completa estos datos y te contacto para revisar el mejor flujo de
-              automatización para tu empresa.
+              Completa estos datos y te contacto para revisar los detalles de tu página web, tienda virtual o mantenimiento.
             </p>
           </header>
 
@@ -212,7 +205,7 @@ export default function Contact({ className }: ContactProps) {
           </label>
 
           <label className="grid gap-2 text-sm font-semibold text-foreground">
-            ¿Qué necesitas automatizar?
+            ¿Qué necesitas para tu proyecto o equipo?
             <textarea
               name="mensaje"
               required
@@ -220,7 +213,7 @@ export default function Contact({ className }: ContactProps) {
               disabled={status === "submitting"}
               value={formData.mensaje}
               onChange={(e) => setFormData({ ...formData, mensaje: e.target.value })}
-              placeholder="Ej: atención por WhatsApp, reportes, ventas, soporte, inventario..."
+              placeholder="Ej: Necesito una tienda online con pasarela de pagos, renovar mi página web, o mantenimiento para computadores de mi empresa..."
               className="min-h-32 resize-none rounded-md border border-input bg-background/70 px-3 py-3 text-sm font-medium leading-relaxed outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-brand disabled:opacity-50"
             />
           </label>

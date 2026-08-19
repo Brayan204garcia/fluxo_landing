@@ -1,7 +1,8 @@
 import {
+  ArrowLeftRight,
+  Bot,
+  Code2,
   GlobeIcon,
-  ShieldCheckIcon,
-  ShoppingCartIcon,
 } from "lucide-react";
 import { ReactNode } from "react";
 
@@ -24,25 +25,41 @@ interface ItemsProps {
 
 const DEFAULT_ITEMS: ItemProps[] = [
   {
-    title: "Páginas Web & Tiendas Online (E-commerce)",
+    title: "Integraciones con IA",
+    description:
+      "Asistentes conectados a WhatsApp o Telegram que responden con la información real de tu negocio como catálogos, inventario o procedimientos, usando búsqueda semántica en vez de respuestas genéricas.",
+    icon: <Bot className="size-5 stroke-[1.5]" />,
+    href: "#contacto",
+    variant: "glow-brand",
+  },
+  {
+    title: "Automatización de procesos",
+    description:
+      "Flujos que conectan tus herramientas como Drive, formularios, bases de datos y mensajería, para que la información se mueva sola entre sistemas sin que nadie tenga que copiarla a mano.",
+    icon: <ArrowLeftRight className="size-5 stroke-[1.5]" />,
+    href: "#contacto",
+    variant: "default",
+  },
+  {
+    title: "Software a medida",
+    description:
+      "Aplicaciones internas como puntos de venta, control de asistencia y paneles administrativos, diseñadas para cómo tu equipo trabaja de verdad, no ajustadas a la fuerza a una plantilla genérica.",
+    icon: <Code2 className="size-5 stroke-[1.5]" />,
+    href: "#contacto",
+    variant: "default",
+  },
+  {
+    title: "Páginas Web & E-commerce",
     description:
       "Sitios corporativos, landing pages de alta conversión y tiendas virtuales con catálogo y pagos PSE, Nequi y Wompi. Posicionamiento SEO en Google y diseño adaptado a celulares.",
     icon: <GlobeIcon className="size-5 stroke-[1.5]" />,
     href: "/servicios/paginas-web",
-    variant: "glow-brand",
-  },
-  {
-    title: "Eliminación de Virus & Mantenimiento",
-    description:
-      "Desinfección profunda de malware, ransomware y virus. Optimización de rendimiento, aceleración y mantenimiento preventivo/correctivo para computadores y portátiles.",
-    icon: <ShieldCheckIcon className="size-5 stroke-[1.5]" />,
-    href: "/servicios/eliminacion-virus",
     variant: "default",
   },
 ];
 
 export default function Items({
-  title = "Servicios digitales y soporte técnico para tu negocio",
+  title = "Servicios digitales y desarrollo para tu negocio",
   items = DEFAULT_ITEMS,
   className,
 }: ItemsProps) {
@@ -53,14 +70,14 @@ export default function Items({
           {title}
         </h2>
         {items !== false && items.length > 0 && (
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 max-w-[960px] w-full">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 w-full">
             {items.map((item) => {
               const isGlowBrand = item.variant === "glow-brand";
               return (
                 <div
                   key={item.title}
                   className={cn(
-                    "relative flex flex-col justify-between gap-6 overflow-hidden rounded-2xl p-8 shadow-xl transition-all duration-300 hover:-translate-y-1",
+                    "relative flex flex-col justify-between gap-6 overflow-hidden rounded-2xl p-6 lg:p-6 shadow-xl transition-all duration-300 hover:-translate-y-1",
                     isGlowBrand
                       ? "glass-3 from-card/100 to-card/100 dark:glass-4 after:content-[''] after:absolute after:-top-[128px] after:left-1/2 after:h-[128px] after:w-[100%] after:max-w-[960px] after:-translate-x-1/2 after:rounded-[50%] after:bg-brand-foreground/70 dark:after:bg-brand/70 after:blur-[72px]"
                       : "glass-2 to-transparent dark:glass-3 after:content-[''] after:absolute after:-top-[128px] after:left-1/2 after:h-[128px] after:w-[100%] after:max-w-[960px] after:-translate-x-1/2 after:rounded-[50%] dark:after:bg-foreground/20 after:blur-[72px]"
@@ -77,18 +94,18 @@ export default function Items({
                       <div className="flex size-10 items-center justify-center rounded-xl bg-foreground/5 border border-foreground/10 text-foreground shrink-0">
                         {item.icon}
                       </div>
-                      <h3 className="text-lg font-bold text-foreground">
+                      <h3 className="text-base font-bold text-foreground leading-snug">
                         {item.title}
                       </h3>
                     </div>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
+                    <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
                       {item.description}
                     </p>
                   </div>
                   <div className="relative z-10 pt-2 mt-auto">
                     <a
                       href={item.href || "#servicios"}
-                      className="flex w-full items-center justify-center rounded-xl bg-white text-black hover:bg-neutral-200 font-semibold cursor-pointer shadow-md transition-colors h-10 px-4 text-sm"
+                      className="flex w-full items-center justify-center rounded-xl bg-white text-black hover:bg-neutral-200 font-semibold cursor-pointer shadow-md transition-colors h-10 px-4 text-xs sm:text-sm"
                     >
                       Más información
                     </a>

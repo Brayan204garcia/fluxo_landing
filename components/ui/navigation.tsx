@@ -63,34 +63,46 @@ export default function Navigation({
   ],
   components = [
     {
-      title: "Páginas Web & Tiendas Online (E-commerce)",
+      title: "Páginas Web & E-commerce",
       href: "/servicios/paginas-web",
       description:
-        "Sitios web corporativos, landing pages y tiendas virtuales con pagos PSE, Nequi y Wompi.",
+        "Sitios web corporativos, landing pages y tiendas online con pagos directos.",
     },
     {
-      title: "Eliminación de Virus & Mantenimiento",
-      href: "/servicios/eliminacion-virus",
+      title: "Integraciones con IA",
+      href: "/#servicios",
       description:
-        "Desinfección de malware, optimización de velocidad y mantenimiento técnico para computadores.",
+        "Asistentes conectados a WhatsApp y Telegram con información real de tu negocio.",
+    },
+    {
+      title: "Automatización de procesos",
+      href: "/#servicios",
+      description:
+        "Flujos que conectan tus herramientas para que la información se mueva sola.",
+    },
+    {
+      title: "Software a medida",
+      href: "/#servicios",
+      description:
+        "Aplicaciones y plataformas internas diseñadas para cómo trabaja tu equipo.",
     },
   ],
   logo = <FluxoAILogo className="h-6 w-auto text-foreground" />,
   logoTitle = "",
-  logoDescription = "Desarrollo de páginas web, tiendas online y soporte técnico profesional.",
+  logoDescription = "Desarrollo de software a medida, automatizaciones con IA y páginas web profesionales.",
   logoHref = "/#servicios",
   introItems = [
     {
       title: "Páginas Web & E-commerce",
       href: "/servicios/paginas-web",
       description:
-        "Sitios corporativos y tiendas online listas para vender con pagos directos en Colombia.",
+        "Sitios corporativos y tiendas virtuales optimizadas para ventas.",
     },
     {
-      title: "Eliminación de Virus & Mantenimiento",
-      href: "/servicios/eliminacion-virus",
+      title: "Soluciones de IA & Software",
+      href: "/#servicios",
       description:
-        "Limpieza profunda de amenazas, aceleración y mantenimiento a domicilio o remoto.",
+        "Automatizaciones, agentes conversacionales y desarrollo a medida.",
     },
   ],
 }: NavigationProps) {

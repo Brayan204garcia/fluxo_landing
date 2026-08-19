@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { ReactNode } from "react";
 
+import { cn } from "@/lib/utils";
 import { Section } from "../../ui/section";
 
 interface LogosProps {
@@ -72,11 +73,11 @@ export default function Logos({
   className,
 }: LogosProps) {
   return (
-    <Section className={className}>
-      <div className="max-w-container mx-auto flex flex-col items-center gap-8 text-center">
-        <div className="flex flex-col items-center gap-6">
+    <Section className={cn("py-6 sm:py-8 md:py-10", className)}>
+      <div className="max-w-container mx-auto flex flex-col items-center gap-4 sm:gap-6 text-center">
+        <div className="flex flex-col items-center gap-2">
           {badge !== false && badge}
-          <h2 className="text-base font-semibold sm:text-2xl text-muted-foreground">{title}</h2>
+          <h2 className="text-base font-semibold sm:text-xl text-muted-foreground">{title}</h2>
         </div>
         {logos !== false && logos.length > 0 && (
           <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">

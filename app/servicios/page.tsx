@@ -33,7 +33,6 @@ export const metadata: Metadata = {
 
 const serviceIcons: Record<string, any> = {
   "paginas-web": Globe,
-  "eliminacion-virus": ShieldCheck,
 };
 
 export default function ServiciosPage() {

@@ -48,8 +48,8 @@ export default function Navbar({
   homeUrl = "/",
   mobileLinks = [
     { text: "Inicio", href: "/" },
+    { text: "Servicios", href: "/#servicios" },
     { text: "Páginas Web & E-commerce", href: "/servicios/paginas-web" },
-    { text: "Eliminación de Virus & Mantenimiento", href: "/servicios/eliminacion-virus" },
     { text: "Contacto", href: "/#contacto" },
   ],
   actions = [
