@@ -13,16 +13,28 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
     default: siteConfig.name,
-    template: `%s - ${siteConfig.shortName}`,
+    template: `%s | ${siteConfig.shortName}`,
   },
   description: siteConfig.description,
   keywords: siteConfig.keywords,
+  category: "technology",
+  classification: "Desarrollo de Software, Páginas Web y Automatización IA",
+  formatDetection: {
+    telephone: true,
+    email: true,
+    address: true,
+  },
   alternates: {
     canonical: siteConfig.url,
+    languages: {
+      "es-CO": siteConfig.url,
+      es: siteConfig.url,
+    },
   },
   robots: {
     index: true,
     follow: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
@@ -33,15 +45,25 @@ export const metadata: Metadata = {
   },
   authors: [
     {
-      name: siteConfig.name,
+      name: siteConfig.shortName,
+      url: siteConfig.url,
     },
   ],
   creator: siteConfig.shortName,
+  publisher: siteConfig.shortName,
   other: {
-    "geo.region": "CO-S",
-    "geo.placename": `${siteConfig.location.city}, ${siteConfig.location.state}`,
+    "geo.region": "CO-SAN",
+    "geo.placename": `${siteConfig.location.city}, ${siteConfig.location.state}, ${siteConfig.location.country}`,
     "geo.position": `${siteConfig.location.geo.latitude};${siteConfig.location.geo.longitude}`,
     ICBM: `${siteConfig.location.geo.latitude}, ${siteConfig.location.geo.longitude}`,
+    "DC.title": siteConfig.name,
+    "DC.creator": siteConfig.shortName,
+    "DC.description": siteConfig.description,
+    "DC.coverage": `${siteConfig.location.city}, ${siteConfig.location.state}, ${siteConfig.location.country}`,
+    "DC.language": "es",
+    "revisit-after": "3 days",
+    rating: "general",
+    distribution: "global",
   },
   openGraph: {
     type: "website",
@@ -49,7 +71,7 @@ export const metadata: Metadata = {
     url: siteConfig.url,
     title: siteConfig.name,
     description: siteConfig.description,
-    siteName: siteConfig.name,
+    siteName: siteConfig.shortName,
     images: [
       {
         url: siteConfig.ogImage,
@@ -80,21 +102,34 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": ["ProfessionalService", "LocalBusiness"],
+        "@type": ["ProfessionalService", "LocalBusiness", "Organization"],
         "@id": `${siteConfig.url}/#localbusiness`,
         name: siteConfig.name,
-        alternateName: "Software & Automatización IA Barrancabermeja",
+        alternateName: ["Fluxo AI", "Desarrollo Web Barrancabermeja", "Software & IA Barrancabermeja"],
         description: siteConfig.description,
         url: siteConfig.url,
         logo: `${siteConfig.url}/favicon.svg`,
         image: `${siteConfig.url}${siteConfig.ogImage}`,
         telephone: `+${siteConfig.whatsapp.phoneNumber}`,
         email: siteConfig.links.email.replace("mailto:", ""),
+        priceRange: "$$",
+        currenciesAccepted: "COP, USD",
+        paymentAccepted: "Transferencia bancaria, PSE, Nequi, Daviplata, Wompi, Tarjeta de Crédito, Efectivo",
+        openingHoursSpecification: [
+          {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            opens: "08:00",
+            closes: "19:00",
+          },
+        ],
         sameAs: [siteConfig.links.whatsapp],
         address: {
           "@type": "PostalAddress",
+          streetAddress: "Barrancabermeja",
           addressLocality: siteConfig.location.city,
           addressRegion: siteConfig.location.state,
+          postalCode: siteConfig.location.postalCode,
           addressCountry: siteConfig.location.countryCode,
         },
         geo: {
@@ -104,7 +139,7 @@ export default function RootLayout({
         },
         areaServed: [
           {
-            "@type": "AdministrativeArea",
+            "@type": "City",
             name: "Barrancabermeja",
           },
           {
@@ -112,40 +147,53 @@ export default function RootLayout({
             name: "Santander",
           },
           {
+            "@type": "City",
+            name: "Bucaramanga",
+          },
+          {
             "@type": "Country",
             name: "Colombia",
           },
         ],
-        priceRange: "$$",
+        knowsAbout: [
+          "Diseño de Páginas Web en Barrancabermeja",
+          "Tiendas Online y E-commerce en Colombia",
+          "Desarrollo de Software a Medida",
+          "Automatización de Procesos con Inteligencia Artificial",
+          "Agentes de WhatsApp con IA",
+          "Pasarelas de Pago Colombia (PSE, Nequi, Wompi)",
+          "Posicionamiento SEO Local en Google",
+        ],
         hasOfferCatalog: {
           "@type": "OfferCatalog",
-          name: "Servicios de Software e Inteligencia Artificial",
+          name: "Servicios Digitales y Software en Barrancabermeja",
           itemListElement: [
             {
               "@type": "Offer",
               itemOffered: {
                 "@type": "Service",
-                name: "Páginas Web y Tiendas Online (E-commerce)",
+                name: "Páginas Web y Tiendas Online (E-commerce) en Barrancabermeja",
                 description:
-                  "Diseño y desarrollo de páginas web, landing pages y tiendas virtuales con catálogo y pagos PSE, Nequi y Wompi.",
+                  "Diseño y desarrollo de sitios web profesionales, landing pages de alta conversión y tiendas virtuales con catálogo y pasarelas de pago PSE, Nequi y Wompi.",
+                provider: {
+                  "@type": "LocalBusiness",
+                  name: siteConfig.shortName,
+                },
+                areaServed: "Barrancabermeja, Santander, Colombia",
               },
             },
             {
               "@type": "Offer",
               itemOffered: {
                 "@type": "Service",
-                name: "Integraciones con Inteligencia Artificial",
+                name: "Automatización de Procesos e Inteligencia Artificial",
                 description:
-                  "Asistentes inteligentes para WhatsApp y Telegram con información real de tu negocio y búsqueda semántica.",
-              },
-            },
-            {
-              "@type": "Offer",
-              itemOffered: {
-                "@type": "Service",
-                name: "Automatización de Procesos y Flujos de Trabajo",
-                description:
-                  "Conexión de herramientas y flujos automáticos entre Drive, formularios, bases de datos y mensajería.",
+                  "Asistentes inteligentes para WhatsApp y Telegram, sincronización de bases de datos y flujos de trabajo automáticos para empresas.",
+                provider: {
+                  "@type": "LocalBusiness",
+                  name: siteConfig.shortName,
+                },
+                areaServed: "Barrancabermeja, Santander, Colombia",
               },
             },
             {
@@ -155,9 +203,25 @@ export default function RootLayout({
                 name: "Desarrollo de Software a Medida",
                 description:
                   "Construcción de aplicaciones web, sistemas internos, puntos de venta y paneles administrativos a medida.",
+                provider: {
+                  "@type": "LocalBusiness",
+                  name: siteConfig.shortName,
+                },
+                areaServed: "Barrancabermeja, Santander, Colombia",
               },
             },
           ],
+        },
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${siteConfig.url}/#website`,
+        url: siteConfig.url,
+        name: siteConfig.name,
+        description: siteConfig.description,
+        inLanguage: "es-CO",
+        publisher: {
+          "@id": `${siteConfig.url}/#localbusiness`,
         },
       },
       {

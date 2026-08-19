@@ -14,16 +14,24 @@ import { LayoutLines } from "@/components/ui/layout-lines";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Servicios Digitales y Soporte Técnico en Barrancabermeja | Fluxo AI",
+  title: "Servicios Digitales, Páginas Web y Software en Barrancabermeja | Fluxo AI",
   description:
-    "Páginas web profesionales, tiendas online (e-commerce) y servicio técnico de eliminación de virus y mantenimiento de computadores en Barrancabermeja.",
+    "Desarrollo de páginas web profesionales, tiendas online (e-commerce), software a medida y automatizaciones con IA en Barrancabermeja y Santander.",
+  keywords: [
+    "servicios digitales barrancabermeja",
+    "paginas web barrancabermeja",
+    "tiendas online barrancabermeja",
+    "ecommerce barrancabermeja",
+    "desarrollo software barrancabermeja",
+    "automatizacion ia santander",
+  ],
   alternates: {
     canonical: `${siteConfig.url}/servicios`,
   },
   openGraph: {
-    title: "Servicios Digitales y Soporte Técnico en Barrancabermeja | Fluxo AI",
+    title: "Servicios Digitales, Páginas Web y Software en Barrancabermeja | Fluxo AI",
     description:
-      "Páginas web profesionales, tiendas online (e-commerce) y servicio técnico de eliminación de virus y mantenimiento de computadores en Barrancabermeja.",
+      "Desarrollo de páginas web profesionales, tiendas online (e-commerce), software a medida y automatizaciones con IA en Barrancabermeja y Santander.",
     url: `${siteConfig.url}/servicios`,
     siteName: siteConfig.shortName,
     locale: "es_CO",
@@ -38,8 +46,43 @@ const serviceIcons: Record<string, any> = {
 export default function ServiciosPage() {
   const allFaqs = services.flatMap((s) => s.faq).slice(0, 8);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Inicio",
+            item: siteConfig.url,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Servicios",
+            item: `${siteConfig.url}/servicios`,
+          },
+        ],
+      },
+      {
+        "@type": "CollectionPage",
+        "@id": `${siteConfig.url}/servicios/#collection`,
+        name: "Servicios Digitales y Desarrollo de Software en Barrancabermeja",
+        url: `${siteConfig.url}/servicios`,
+        description:
+          "Catálogo de servicios de diseño web, comercio electrónico y automatización de procesos en Barrancabermeja.",
+      },
+    ],
+  };
+
   return (
     <main className="bg-background text-foreground min-h-screen w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <LayoutLines />
       <Navbar />
 

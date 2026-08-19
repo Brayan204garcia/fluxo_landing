@@ -55,32 +55,108 @@ export default async function ServicePage({ params }: Props) {
     notFound();
   }
 
-  const faqItems = service!.faq.map((f) => ({
+  const faqItems = service.faq.map((f) => ({
     question: f.question,
     answer: f.answer,
   }));
 
-  const waUrl = `https://wa.me/${siteConfig.whatsapp.phoneNumber}?text=${encodeURIComponent(service!.cta.whatsappMessage)}`;
+  const waUrl = `https://wa.me/${siteConfig.whatsapp.phoneNumber}?text=${encodeURIComponent(service.cta.whatsappMessage)}`;
+  const pageUrl = `${siteConfig.url}/servicios/${service.slug}`;
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Inicio",
+            item: siteConfig.url,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Servicios",
+            item: `${siteConfig.url}/servicios`,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: service.name,
+            item: pageUrl,
+          },
+        ],
+      },
+      {
+        "@type": "Service",
+        "@id": `${pageUrl}/#service`,
+        name: service.name,
+        description: service.description,
+        provider: {
+          "@type": "LocalBusiness",
+          name: siteConfig.shortName,
+          url: siteConfig.url,
+          telephone: `+${siteConfig.whatsapp.phoneNumber}`,
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: siteConfig.location.city,
+            addressRegion: siteConfig.location.state,
+            addressCountry: siteConfig.location.countryCode,
+          },
+        },
+        areaServed: [
+          { "@type": "City", name: "Barrancabermeja" },
+          { "@type": "AdministrativeArea", name: "Santander" },
+          { "@type": "Country", name: "Colombia" },
+        ],
+        serviceType: service.name,
+        offers: {
+          "@type": "Offer",
+          priceCurrency: "COP",
+          availability: "https://schema.org/InStock",
+          url: pageUrl,
+        },
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${pageUrl}/#faq`,
+        mainEntity: service.faq.map((f) => ({
+          "@type": "Question",
+          name: f.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: f.answer,
+          },
+        })),
+      },
+    ],
+  };
 
   return (
     <main className="bg-background text-foreground min-h-screen w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <LayoutLines />
       <Navbar />
       <ServiceHero
-        badge={service!.badge}
-        title={service!.tagline}
-        description={service!.description}
-        slug={service!.slug}
-        whatsappMessage={service!.cta.whatsappMessage}
+        badge={service.badge}
+        title={service.tagline}
+        description={service.description}
+        slug={service.slug}
+        whatsappMessage={service.cta.whatsappMessage}
       />
-      <ServiceFeatures features={service!.features} />
-      <ServiceBenefits benefits={service!.benefits} />
+      <ServiceFeatures features={service.features} />
+      <ServiceBenefits benefits={service.benefits} />
       <FAQ
-        title={`Preguntas frecuentes sobre ${service!.name}`}
+        title={`Preguntas frecuentes sobre ${service.name}`}
         items={faqItems}
       />
       <CTA
-        title={service!.cta.title}
+        title={service.cta.title}
         buttons={[
           { text: "Quiero este servicio", href: waUrl, variant: "default" },
           { text: "Volver al inicio", href: "/", variant: "outline" },
