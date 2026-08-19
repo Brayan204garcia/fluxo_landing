@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   keywords: siteConfig.keywords,
   category: "technology",
-  classification: "Desarrollo de Software, Páginas Web y Automatización IA",
+  classification: "Automatización de Procesos con Inteligencia Artificial, Agentes de IA y Desarrollo de Software",
   formatDetection: {
     telephone: true,
     email: true,
@@ -129,7 +129,11 @@ export default function RootLayout({
         "@type": ["ProfessionalService", "LocalBusiness", "Organization"],
         "@id": `${siteConfig.url}/#localbusiness`,
         name: siteConfig.name,
-        alternateName: ["Fluxo AI", "Desarrollo Web Barrancabermeja", "Software & IA Barrancabermeja"],
+        alternateName: [
+          "Fluxo AI",
+          "Automatización con Inteligencia Artificial Barrancabermeja",
+          "Agentes de IA y Software Barrancabermeja",
+        ],
         description: siteConfig.description,
         url: siteConfig.url,
         logo: `${siteConfig.url}/logos/fluxoai_logo.svg`,
@@ -180,25 +184,25 @@ export default function RootLayout({
           },
         ],
         knowsAbout: [
-          "Diseño de Páginas Web en Barrancabermeja",
-          "Tiendas Online y E-commerce en Colombia",
-          "Desarrollo de Software a Medida",
           "Automatización de Procesos con Inteligencia Artificial",
-          "Agentes de WhatsApp con IA",
-          "Pasarelas de Pago Colombia (PSE, Nequi, Wompi)",
+          "Agentes de Inteligencia Artificial para WhatsApp",
+          "Desarrollo de Software a Medida para Empresas",
+          "Integración de Flujos de Trabajo y APIs Empresariales",
+          "Chatbots Inteligentes y Búsqueda Semántica RAG",
           "Posicionamiento SEO Local en Google",
+          "Desarrollo de Plataformas Web Estratégicas y E-commerce",
         ],
         hasOfferCatalog: {
           "@type": "OfferCatalog",
-          name: "Servicios Digitales y Software en Barrancabermeja",
+          name: "Soluciones de Inteligencia Artificial y Software en Barrancabermeja",
           itemListElement: [
             {
               "@type": "Offer",
               itemOffered: {
                 "@type": "Service",
-                name: "Páginas Web y Tiendas Online (E-commerce) en Barrancabermeja",
+                name: "Automatización de Procesos e Inteligencia Artificial",
                 description:
-                  "Diseño y desarrollo de sitios web profesionales, landing pages de alta conversión y tiendas virtuales con catálogo y pasarelas de pago PSE, Nequi y Wompi.",
+                  "Optimización de flujos operativos, conexión de sistemas empresariales y eliminación de tareas manuales repetitivas con IA.",
                 provider: {
                   "@type": "LocalBusiness",
                   name: siteConfig.shortName,
@@ -210,9 +214,9 @@ export default function RootLayout({
               "@type": "Offer",
               itemOffered: {
                 "@type": "Service",
-                name: "Automatización de Procesos e Inteligencia Artificial",
+                name: "Agentes Inteligentes y Chatbots de IA para WhatsApp",
                 description:
-                  "Asistentes inteligentes para WhatsApp y Telegram, sincronización de bases de datos y flujos de trabajo automáticos para empresas.",
+                  "Asistentes conversacionales con inteligencia artificial conectados a WhatsApp con información real de tu negocio y atención 24/7.",
                 provider: {
                   "@type": "LocalBusiness",
                   name: siteConfig.shortName,
@@ -226,7 +230,21 @@ export default function RootLayout({
                 "@type": "Service",
                 name: "Desarrollo de Software a Medida",
                 description:
-                  "Construcción de aplicaciones web, sistemas internos, puntos de venta y paneles administrativos a medida.",
+                  "Construcción de aplicaciones web, sistemas internos, puntos de venta y paneles administrativos a medida para empresas.",
+                provider: {
+                  "@type": "LocalBusiness",
+                  name: siteConfig.shortName,
+                },
+                areaServed: "Barrancabermeja, Santander, Colombia",
+              },
+            },
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: "Plataformas Web Estratégicas & Tiendas Online (E-commerce)",
+                description:
+                  "Desarrollo de sitios web y tiendas virtuales de alta conversión con pagos PSE, Nequi y Wompi en Colombia.",
                 provider: {
                   "@type": "LocalBusiness",
                   name: siteConfig.shortName,

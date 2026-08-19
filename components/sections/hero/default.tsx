@@ -38,7 +38,7 @@ const DEFAULT_HERO_BADGE = (
       <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-75"></span>
       <span className="relative inline-flex h-2 w-2 rounded-full bg-brand"></span>
     </span>
-    Software a Medida, Automatización IA & Páginas Web en Barrancabermeja
+    Automatización con Inteligencia Artificial & Software en Barrancabermeja
   </div>
 );
 

@@ -14,24 +14,24 @@ import { LayoutLines } from "@/components/ui/layout-lines";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Servicios Digitales, Páginas Web y Software en Barrancabermeja | Fluxo AI",
+  title: "Automatización de Procesos con IA & Software en Barrancabermeja | Fluxo AI",
   description:
-    "Desarrollo de páginas web profesionales, tiendas online (e-commerce), software a medida y automatizaciones con IA en Barrancabermeja y Santander.",
+    "Soluciones de automatización de procesos empresariales con Inteligencia Artificial, agentes de WhatsApp y desarrollo de software a medida en Barrancabermeja.",
   keywords: [
-    "servicios digitales barrancabermeja",
-    "paginas web barrancabermeja",
-    "tiendas online barrancabermeja",
-    "ecommerce barrancabermeja",
+    "automatizacion de procesos barrancabermeja",
+    "inteligencia artificial barrancabermeja",
+    "agentes de whatsapp barrancabermeja",
     "desarrollo software barrancabermeja",
+    "software a medida barrancabermeja",
     "automatizacion ia santander",
   ],
   alternates: {
     canonical: `${siteConfig.url}/servicios`,
   },
   openGraph: {
-    title: "Servicios Digitales, Páginas Web y Software en Barrancabermeja | Fluxo AI",
+    title: "Automatización de Procesos con IA & Software en Barrancabermeja | Fluxo AI",
     description:
-      "Desarrollo de páginas web profesionales, tiendas online (e-commerce), software a medida y automatizaciones con IA en Barrancabermeja y Santander.",
+      "Soluciones de automatización de procesos empresariales con Inteligencia Artificial, agentes de WhatsApp y desarrollo de software a medida en Barrancabermeja.",
     url: `${siteConfig.url}/servicios`,
     siteName: siteConfig.shortName,
     locale: "es_CO",
