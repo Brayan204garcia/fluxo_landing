@@ -3,22 +3,20 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import {
-  Code,
-  Globe,
+  ArrowLeftRight,
   Bot,
-  Database,
-  Smartphone,
-  ShieldCheck,
-  Zap,
+  Code2,
+  GlobeIcon,
   MapPin,
   CheckCircle2,
   ArrowRight,
-  TrendingUp,
   MessageCircle,
 } from "lucide-react";
+import { ReactNode } from "react";
 
-import { getCityBySlug, getAllCitySlugs, getAllCities, type CityConfig } from "@/config/cities";
+import { getCityBySlug, getAllCitySlugs, type CityConfig } from "@/config/cities";
 import { siteConfig } from "@/config/site";
+import { cn } from "@/lib/utils";
 
 import Navbar from "@/components/sections/navbar/default";
 import Footer from "@/components/sections/footer/default";
@@ -82,14 +80,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-const ICON_MAP = {
-  Code: Code,
-  Globe: Globe,
-  Bot: Bot,
-  Database: Database,
-  Smartphone: Smartphone,
-  ShieldCheck: ShieldCheck,
-  Zap: Zap,
+const ICON_MAP: Record<string, ReactNode> = {
+  Bot: <Bot className="size-5 stroke-[1.5]" />,
+  ArrowLeftRight: <ArrowLeftRight className="size-5 stroke-[1.5]" />,
+  Code2: <Code2 className="size-5 stroke-[1.5]" />,
+  GlobeIcon: <GlobeIcon className="size-5 stroke-[1.5]" />,
+  Code: <Code2 className="size-5 stroke-[1.5]" />,
+  Globe: <GlobeIcon className="size-5 stroke-[1.5]" />,
+  Zap: <ArrowLeftRight className="size-5 stroke-[1.5]" />,
+  Database: <Code2 className="size-5 stroke-[1.5]" />,
 };
 
 export default async function CityLandingPage({ params }: Props) {
@@ -99,9 +98,6 @@ export default async function CityLandingPage({ params }: Props) {
   if (!city) {
     notFound();
   }
-
-  const allCities = getAllCities();
-  const otherCities = allCities.filter((c) => c.slug !== city.slug);
 
   const waUrl = `https://wa.me/${siteConfig.whatsapp.phoneNumber}?text=${encodeURIComponent(city.hero.ctaWhatsappMessage)}`;
   const pageUrl = `${siteConfig.url}/ciudad/${city.slug}`;
@@ -303,14 +299,14 @@ export default async function CityLandingPage({ params }: Props) {
         </div>
       </Section>
 
-      {/* 2. INDUSTRY FOCUS & SERVICES */}
-      <Section id="servicios-locales" className="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 border-t border-border/40 bg-card/20">
-        <div className="max-w-container mx-auto flex flex-col gap-12">
+      {/* 2. SERVICES SECTION (Matching Index Page Glassmorphism Style) */}
+      <Section id="servicios-locales" className="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 border-t border-border/40">
+        <div className="max-w-container mx-auto flex flex-col items-center gap-12 sm:gap-16">
           <div className="flex flex-col items-center text-center gap-4 max-w-3xl mx-auto">
             <span className="text-xs font-bold uppercase tracking-wider text-brand">
               {city.industryFocus.badge}
             </span>
-            <h2 className="text-2xl sm:text-4xl font-bold tracking-tight">
+            <h2 className="max-w-[760px] text-center text-3xl leading-tight font-semibold sm:text-5xl sm:leading-tight">
               {city.industryFocus.title}
             </h2>
             <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
@@ -318,33 +314,74 @@ export default async function CityLandingPage({ params }: Props) {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-            {city.services.map((svc, idx) => {
-              const IconComponent = ICON_MAP[svc.iconName as keyof typeof ICON_MAP] || Code;
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 w-full">
+            {city.services.map((item) => {
+              const isGlowBrand = item.variant === "glow-brand";
+              const iconElement = ICON_MAP[item.iconName as keyof typeof ICON_MAP] || <Bot className="size-5 stroke-[1.5]" />;
+              const serviceWaUrl = `https://wa.me/${siteConfig.whatsapp.phoneNumber}?text=${encodeURIComponent(item.whatsappMessage)}`;
+              const targetUrl = item.href ? item.href : serviceWaUrl;
+
               return (
                 <div
-                  key={idx}
-                  className="group relative flex flex-col justify-between rounded-2xl border border-border/80 bg-background/80 p-6 sm:p-8 backdrop-blur-sm transition-all duration-300 hover:border-brand/50 hover:shadow-xl hover:shadow-brand/5"
+                  key={item.title}
+                  className={cn(
+                    "group relative flex flex-col justify-between gap-6 overflow-hidden rounded-2xl p-6 lg:p-6 shadow-xl transition-all duration-300 hover:-translate-y-1.5",
+                    isGlowBrand
+                      ? "glass-3 from-card/100 to-card/100 dark:glass-4 after:content-[''] after:absolute after:-top-[128px] after:left-1/2 after:h-[128px] after:w-[100%] after:max-w-[960px] after:-translate-x-1/2 after:rounded-[50%] after:bg-brand-foreground/70 dark:after:bg-brand/70 after:blur-[72px]"
+                      : "glass-2 to-transparent dark:glass-3 after:content-[''] after:absolute after:-top-[128px] after:left-1/2 after:h-[128px] after:w-[100%] after:max-w-[960px] after:-translate-x-1/2 after:rounded-[50%] dark:after:bg-foreground/20 after:blur-[72px]"
+                  )}
                 >
-                  <div className="flex flex-col gap-4">
-                    <div className="flex size-12 items-center justify-center rounded-xl border border-brand/20 bg-brand/10 text-brand group-hover:scale-105 transition-transform">
-                      <IconComponent className="size-6" />
+                  <hr
+                    className={cn(
+                      "absolute top-0 left-[10%] h-[1px] w-[80%] border-0 bg-linear-to-r from-transparent to-transparent z-10",
+                      isGlowBrand ? "via-brand" : "via-foreground/60"
+                    )}
+                  />
+                  <div className="flex flex-col gap-4 relative z-10">
+                    {/* Tag / Category Badge */}
+                    <div className="flex items-center justify-between">
+                      <span className="inline-flex items-center gap-1 rounded-md border border-brand/30 bg-brand/10 px-2.5 py-0.5 text-[11px] font-semibold text-brand tracking-wide">
+                        {item.tag}
+                      </span>
                     </div>
-                    <h3 className="text-xl font-bold text-foreground">
-                      {svc.title}
-                    </h3>
-                    <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                      {svc.description}
+
+                    {/* Icon & Title */}
+                    <div className="flex items-center gap-3">
+                      <div className="flex size-10 items-center justify-center rounded-xl bg-foreground/5 border border-foreground/10 text-foreground shrink-0 group-hover:scale-105 transition-transform">
+                        {iconElement}
+                      </div>
+                      <h3 className="text-base font-bold text-foreground leading-snug">
+                        {item.title}
+                      </h3>
+                    </div>
+
+                    {/* Description */}
+                    <p className="text-muted-foreground text-xs sm:text-[13px] leading-relaxed">
+                      {item.description}
                     </p>
+
+                    {/* Micro-Checklist of Highlights */}
+                    {item.highlights && item.highlights.length > 0 && (
+                      <div className="flex flex-col gap-2 pt-2 border-t border-border/40">
+                        {item.highlights.map((h, i) => (
+                          <div key={i} className="flex items-start gap-2 text-xs text-foreground/85">
+                            <CheckCircle2 className="size-3.5 text-emerald-500 shrink-0 mt-0.5" />
+                            <span className="leading-snug">{h}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
 
-                  <div className="mt-6 pt-4 border-t border-border/40">
-                    <Link
-                      href={waUrl}
-                      className="inline-flex items-center text-xs font-semibold text-brand transition group-hover:translate-x-1"
+                  {/* Bottom Action Button */}
+                  <div className="relative z-10 pt-2 mt-auto">
+                    <a
+                      href={targetUrl}
+                      className="group/btn flex w-full items-center justify-center gap-1.5 rounded-xl bg-white text-black hover:bg-neutral-200 font-semibold cursor-pointer shadow-md transition-all duration-200 h-10 px-4 text-xs sm:text-sm"
                     >
-                      Consultar disponibilidad para {city.shortName} <ArrowRight className="ml-1 size-3.5" />
-                    </Link>
+                      <span>Cotizar en {city.shortName}</span>
+                      <ArrowRight className="size-3.5 transition-transform group-hover/btn:translate-x-1" />
+                    </a>
                   </div>
                 </div>
               );
@@ -353,68 +390,7 @@ export default async function CityLandingPage({ params }: Props) {
         </div>
       </Section>
 
-      {/* 3. REAL-WORLD REGIONAL USE CASES */}
-      <Section className="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 border-t border-border/40">
-        <div className="max-w-container mx-auto flex flex-col gap-12">
-          <div className="flex flex-col items-center text-center gap-3 max-w-2xl mx-auto">
-            <span className="text-xs font-bold uppercase tracking-wider text-brand">
-              Casos de Aplicación Real
-            </span>
-            <h2 className="text-2xl sm:text-4xl font-bold tracking-tight">
-              Cómo transformamos negocios en {city.name}
-            </h2>
-            <p className="text-muted-foreground text-sm sm:text-base">
-              Retos comunes de la región resueltos con arquitectura digital moderna.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {city.useCases.map((uc, i) => (
-              <div
-                key={i}
-                className="flex flex-col justify-between rounded-2xl border border-border bg-card/40 p-6 sm:p-7 backdrop-blur-xs"
-              >
-                <div className="flex flex-col gap-4">
-                  <div className="inline-flex items-center gap-1.5 self-start rounded-md bg-secondary px-2.5 py-1 text-xs font-semibold text-secondary-foreground">
-                    <TrendingUp className="size-3.5 text-brand" />
-                    {uc.industry}
-                  </div>
-
-                  <div className="flex flex-col gap-2">
-                    <span className="text-xs font-semibold text-rose-500 uppercase tracking-wide">El Desafío:</span>
-                    <p className="text-sm text-muted-foreground">{uc.challenge}</p>
-                  </div>
-
-                  <div className="flex flex-col gap-2">
-                    <span className="text-xs font-semibold text-blue-500 uppercase tracking-wide">Nuestra Solución:</span>
-                    <p className="text-sm text-foreground/90">{uc.solution}</p>
-                  </div>
-                </div>
-
-                <div className="mt-6 pt-4 border-t border-border/60 bg-brand/5 -mx-6 -mb-6 p-4 sm:p-5 rounded-b-2xl">
-                  <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wide block mb-1">
-                    Impacto Generado:
-                  </span>
-                  <p className="text-xs sm:text-sm font-medium text-foreground">
-                    {uc.result}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </Section>
-
-      {/* 4. LOCAL FAQ SECTION */}
-      <FAQ
-        title={`Preguntas Frecuentes en ${city.name}`}
-        items={city.faqs.map((f) => ({
-          question: f.question,
-          answer: <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">{f.answer}</p>,
-        }))}
-      />
-
-      {/* 5. FINAL CALL TO ACTION */}
+      {/* 3. CALL TO ACTION SECTION (Encima de FAQ) */}
       <Section className="group relative overflow-hidden py-16 sm:py-24 px-4 border-t border-border/40">
         <div className="max-w-container relative z-10 mx-auto flex flex-col items-center gap-6 text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-brand/30 bg-brand/10 px-3.5 py-1 text-xs font-semibold text-brand">
@@ -447,25 +423,14 @@ export default async function CityLandingPage({ params }: Props) {
         </div>
       </Section>
 
-      {/* 6. OTHER CITIES INTERNAL NAVIGATION */}
-      <div className="border-t border-border/30 bg-muted/20 py-8 px-4">
-        <div className="max-w-container mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-          <span className="font-semibold text-muted-foreground">
-            Otras ciudades con cobertura directa:
-          </span>
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            {otherCities.map((c) => (
-              <Link
-                key={c.slug}
-                href={`/ciudad/${c.slug}`}
-                className="rounded-md border border-border/60 bg-background px-2.5 py-1 text-muted-foreground transition hover:border-brand hover:text-brand"
-              >
-                {c.name} ({c.department})
-              </Link>
-            ))}
-          </div>
-        </div>
-      </div>
+      {/* 4. LOCAL FAQ SECTION */}
+      <FAQ
+        title={`Preguntas Frecuentes en ${city.name}`}
+        items={city.faqs.map((f) => ({
+          question: f.question,
+          answer: <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">{f.answer}</p>,
+        }))}
+      />
 
       <Footer />
     </main>

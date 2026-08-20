@@ -1,7 +1,12 @@
 export interface CityService {
+  tag: string;
   title: string;
   description: string;
-  iconName: "Code" | "Globe" | "Bot" | "Cpu" | "Database" | "ShieldCheck" | "Zap" | "Smartphone";
+  highlights: string[];
+  iconName: "Bot" | "ArrowLeftRight" | "Code2" | "GlobeIcon" | "Code" | "Globe" | "Zap" | "Database";
+  whatsappMessage: string;
+  href?: string;
+  variant?: "glow-brand" | "default";
 }
 
 export interface CityUseCase {
@@ -88,57 +93,70 @@ export const cities: CityConfig[] = [
         "¡Hola! Me encuentro en Barrancabermeja y me gustaría cotizar un desarrollo de software / página web para mi negocio.",
     },
     industryFocus: {
-      badge: "Ecosistema Industrial & Comercial",
-      title: "Soluciones Digitales para la Industria y Empresas de Barrancabermeja",
+      badge: "Soluciones Industriales & Comerciales",
+      title: "Servicios Digitales y Desarrollo para Empresas en Barrancabermeja",
       description:
-        "Entendemos la dinámica empresarial del Magdalena Medio: requerimientos de contratistas petroleros, logística de suministros, talleres industriales y comercios locales que necesitan operar sin fricción.",
+        "Tecnología diseñada para contratistas, talleres industriales, empresas de logística y comercios en el Magdalena Medio.",
     },
     services: [
       {
-        title: "Software a Medida & Plataformas B2B",
+        tag: "IA & Atención 24/7",
+        title: "Integraciones con IA",
         description:
-          "Sistemas administrativos, control de cuadrillas, gestión de inventarios, reportes de mantenimiento y portales de clientes diseñados exactamente según tu flujo de trabajo.",
-        iconName: "Code",
-      },
-      {
-        title: "Páginas Web Corporativas & E-commerce",
-        description:
-          "Sitios web ultra veloces optimizados para posicionarse en los primeros lugares de Google cuando busquen tus servicios en Barrancabermeja y Colombia.",
-        iconName: "Globe",
-      },
-      {
-        title: "Automatización & Agentes con Inteligencia Artificial",
-        description:
-          "Agentes de WhatsApp que atienden clientes 24/7, responden cotizaciones, agendan citas y sincronizan pedidos con tu base de datos automáticamente.",
+          "Asistentes inteligentes en WhatsApp que atienden clientes corporativos, responden cotizaciones técnicas y consultan inventarios usando los datos reales de tu empresa.",
+        highlights: [
+          "Respuestas instantáneas con catálogos y tarifas",
+          "Calificación de clientes y captación de leads",
+          "Conexión directa con tu base de datos o WhatsApp",
+        ],
         iconName: "Bot",
+        whatsappMessage: "¡Hola! Me interesa integrar un Agente de IA para mi empresa en Barrancabermeja.",
+        variant: "glow-brand",
       },
       {
-        title: "Sistemas en la Nube & Dashboards",
+        tag: "Cero Tareas Manuales",
+        title: "Automatización de Procesos",
         description:
-          "Accede a las métricas clave de tu operación en tiempo real desde cualquier dispositivo, con alta seguridad y respaldos automáticos.",
-        iconName: "Database",
+          "Flujos que conectan tus herramientas (planillas, reportes de campo, correos y mensajería) para que los datos fluyan sin necesidad de digitación manual.",
+        highlights: [
+          "Eliminación de duplicación de datos en Excel",
+          "Notificaciones automáticas de órdenes y compras",
+          "Generación instantánea de reportes operativos",
+        ],
+        iconName: "ArrowLeftRight",
+        whatsappMessage: "¡Hola! Quisiera automatizar los flujos operativos de mi negocio en Barrancabermeja.",
+        variant: "default",
+      },
+      {
+        tag: "Sistemas a la Medida",
+        title: "Software a Medida",
+        description:
+          "Plataformas internas para control de cuadrillas, horas hombre, gestión de inventarios, reportes de mantenimiento y sistemas POS adaptados a tu operación.",
+        highlights: [
+          "Control de cuadrillas y órdenes de trabajo",
+          "Inventarios y despachos en tiempo real",
+          "Acceso seguro desde computador y celular",
+        ],
+        iconName: "Code2",
+        whatsappMessage: "¡Hola! Deseo cotizar un software a la medida para mi empresa en Barrancabermeja.",
+        variant: "default",
+      },
+      {
+        tag: "Posicionamiento Local",
+        title: "Páginas Web & E-commerce",
+        description:
+          "Sitios corporativos y tiendas virtuales con pasarelas de pago colombianas (PSE, Nequi, Wompi) y posicionamiento SEO para dominar búsquedas en Barrancabermeja.",
+        highlights: [
+          "Carga ultra rápida optimizada para celulares",
+          "SEO para aparecer en los primeros lugares de Google",
+          "Botones directos de WhatsApp y formularios B2B",
+        ],
+        iconName: "GlobeIcon",
+        whatsappMessage: "¡Hola! Me gustaría cotizar una página web profesional para mi negocio en Barrancabermeja.",
+        variant: "default",
       },
     ],
-    useCases: [
-      {
-        industry: "Contratistas y Servicios Industriales",
-        challenge: "Control manual y disperso en Excel de horas hombre, órdenes de trabajo y reporte de campo.",
-        solution: "Plataforma web accesible desde móvil con validación de tareas en terreno y exportación de informes para auditorías.",
-        result: "Ahorro de más de 15 horas semanales en papeleo y 0% de pérdida de registros.",
-      },
-      {
-        industry: "Comercios y Distribuidores Locales",
-        challenge: "Pérdida de ventas por demoras en responder cotizaciones y mensajes repetitivos en WhatsApp.",
-        solution: "Implementación de un catálogo web sincronizado con un asistente virtual de IA para atención 24/7.",
-        result: "Aumento del 40% en velocidad de cotización y captación de clientes fuera de horario comercial.",
-      },
-      {
-        industry: "Empresas de Logística y Transporte Fluvial/Terrestre",
-        challenge: "Falta de visibilidad sobre despachos, guías y trazabilidad de carga en el Magdalena Medio.",
-        solution: "Software a medida con consulta de guías en tiempo real para clientes y panel administrativo unificado.",
-        result: "Reducción del 60% en llamadas de soporte y mayor satisfacción de los clientes corporativos.",
-      },
-    ],
+    useCases: [],
     faqs: [
       {
         question: "¿Por qué contratar un desarrollador de software en Barrancabermeja?",
@@ -200,57 +218,70 @@ export const cities: CityConfig[] = [
         "¡Hola! Me encuentro en Bucaramanga y deseo cotizar automatización de procesos / agentes de IA para mi empresa.",
     },
     industryFocus: {
-      badge: "Hub Empresarial & Productivo de Santander",
-      title: "Automatización Inteligente para Empresas Corporativas, Salud y Servicios en Bucaramanga",
+      badge: "Hub Corporativo & Salud",
+      title: "Automatización Inteligente para Empresas en Bucaramanga",
       description:
-        "Bucaramanga cuenta con un sector empresarial de alto ritmo: clínicas, firmas de consultoría, distribuidoras y corporativos que pierden cientos de horas en tareas repetitivas. Convertimos procesos manuales en flujos autónomos con IA.",
+        "Soluciones para clínicas, firmas de servicios, distribuidoras y empresas de Santander que necesitan escalar reduciendo costos operativos.",
     },
     services: [
       {
-        title: "Agentes Autónomos de IA & WhatsApp 24/7",
+        tag: "Atención Autónoma 24/7",
+        title: "Integraciones con IA",
         description:
-          "Asistentes inteligentes que atienden consultas, cotizan productos, agendan citas y califican prospectos en tiempo real sincronizados con tu CRM o base de datos.",
+          "Agentes de IA conectados a WhatsApp que agendan citas, atienden pacientes o clientes, envían recordatorios y responden consultas complejas con lenguaje natural.",
+        highlights: [
+          "Agendamiento automático de citas médicas y comerciales",
+          "Atención en lenguaje natural y audios de WhatsApp",
+          "Sincronización con calendarios y CRM en tiempo real",
+        ],
         iconName: "Bot",
+        whatsappMessage: "¡Hola! Deseo cotizar un Agente de IA para mi empresa en Bucaramanga.",
+        variant: "glow-brand",
       },
       {
-        title: "Automatización de Flujos de Trabajo & Operaciones",
+        tag: "Eficiencia Operativa",
+        title: "Automatización de Procesos",
         description:
-          "Eliminación de digitación manual, extracción inteligente de datos de facturas/documentos y conexión de datos entre tus plataformas empresariales.",
-        iconName: "Zap",
+          "Extracción inteligente de datos de facturas, procesamiento de pedidos masivos y conexión entre tus sistemas contables (Siigo, SAP, Zoho) y plataformas internas.",
+        highlights: [
+          "Extracción automática de datos de PDFs y contratos",
+          "Sincronización con Siigo, ERPs y bases de datos",
+          "Reducción de hasta un 70% en trabajo administrativo",
+        ],
+        iconName: "ArrowLeftRight",
+        whatsappMessage: "¡Hola! Me interesa automatizar procesos administrativos en Bucaramanga.",
+        variant: "default",
       },
       {
-        title: "Software Empresarial & Plataformas a la Medida",
+        tag: "Plataformas Robustas",
+        title: "Software a Medida",
         description:
-          "Sistemas administrativos, portales internos de gestión, dashboards analíticos y herramientas personalizadas para el flujo exacto de tu equipo.",
-        iconName: "Code",
+          "Desarrollo de portales web corporativos, software SaaS, paneles de control y sistemas de gestión interna diseñados para el flujo exacto de tu equipo de trabajo.",
+        highlights: [
+          "Arquitectura moderna en la nube y alta seguridad",
+          "Dashboards analíticos con métricas en tiempo real",
+          "Código 100% de propiedad de tu empresa",
+        ],
+        iconName: "Code2",
+        whatsappMessage: "¡Hola! Quiero cotizar un software a la medida para mi empresa en Bucaramanga.",
+        variant: "default",
       },
       {
-        title: "Integraciones con APIs, ERPs & Bases de Datos",
+        tag: "Presencia Corporativa",
+        title: "Páginas Web & E-commerce",
         description:
-          "Conexión de tus herramientas actuales (Siigo, SAP, HubSpot, Zoho, SQL) con modelos de IA y pipelines de automatización seguros.",
-        iconName: "Database",
+          "Sitios corporativos de alto impacto visual y tiendas e-commerce de alto rendimiento con pagos integrados y SEO para captar clientes en Bucaramanga y Colombia.",
+        highlights: [
+          "Diseño moderno enfocado en conversión y ventas",
+          "Pasarelas seguras (Wompi, Bold, PSE, Nequi)",
+          "Posicionamiento SEO en Google para Santander",
+        ],
+        iconName: "GlobeIcon",
+        whatsappMessage: "¡Hola! Deseo cotizar una página web corporativa para Bucaramanga.",
+        variant: "default",
       },
     ],
-    useCases: [
-      {
-        industry: "Centros Médicos, Clínicas y Odontología",
-        challenge: "Colapso en líneas de WhatsApp y horas del personal dedicadas únicamente a responder mensajes y reprogramar citas.",
-        solution: "Agente de IA autónomo para agendamiento, confirmación automática por WhatsApp y sincronización con el calendario médico.",
-        result: "Reducción del 70% en carga operativa de recepción y 0% de citas perdidas por falta de respuesta.",
-      },
-      {
-        industry: "Distribuidoras, Mayoristas y Comercio B2B",
-        challenge: "Demoras en procesar pedidos manuales por chat, consultar stock en bodega y enviar cotizaciones a clientes.",
-        solution: "Asistente inteligente que interpreta pedidos en lenguaje natural o audios, valida inventario y genera la orden en el sistema.",
-        result: "Procesamiento de cotizaciones en 30 segundos y aumento del 45% en volumen de ventas atendidas.",
-      },
-      {
-        industry: "Firmas de Consultoría, Abogados y Servicios Financieros",
-        challenge: "Horas de trabajo manual en lectura de documentos, extracción de datos y elaboración de informes repetitivos.",
-        solution: "Pipeline de IA para clasificación y extracción estructurada de información desde contratos y facturas en segundos.",
-        result: "Ahorro de más de 20 horas semanales por analista y eliminación total de errores de digitación.",
-      },
-    ],
+    useCases: [],
     faqs: [
       {
         question: "¿Qué tipo de procesos se pueden automatizar con IA en una empresa?",
@@ -310,57 +341,70 @@ export const cities: CityConfig[] = [
         "¡Hola! Tengo un negocio en Mompox y me gustaría conocer cómo la Inteligencia Artificial y los agentes de WhatsApp pueden automatizar mis reservas y ventas.",
     },
     industryFocus: {
-      badge: "Transformación Digital para Negocios Momposinos",
-      title: "Inteligencia Artificial Aplicada al Turismo, Hotelería y Comercio en Mompox",
+      badge: "Turismo, Hotelería & Comercio Momposino",
+      title: "Innovación y Automatización para Negocios en Mompox",
       description:
-        "Los turistas buscan inmediatez, reservan a deshoras y en diferentes idiomas. Implementamos agentes inteligentes que atienden y venden mientras descansas, eliminando tareas manuales y comisiones a intermediarios.",
+        "Soluciones prácticas para hoteles, joyerías de filigrana, operadores turísticos y restaurantes: atención 24/7 sin comisiones a terceros y control total.",
     },
     services: [
       {
-        title: "Agentes de WhatsApp con IA para Hoteles & Hostales",
+        tag: "Turismo & Reservas 24/7",
+        title: "Integraciones con IA",
         description:
-          "Responde preguntas de huéspedes, envía fotos de habitaciones, cotiza temporadas (Semana Santa, Jazz Festival) y agenda reservas directas 24/7.",
+          "Asistentes de IA en WhatsApp que atienden turistas nacionales y extranjeros en cualquier idioma. Envían fotos de habitaciones, cotizan temporadas (Semana Santa, Jazz) y cierran reservas directas.",
+        highlights: [
+          "Atención en español, inglés y otros idiomas",
+          "Cotización y fotos de habitaciones al instante",
+          "0% de comisiones a plataformas como Booking o Airbnb",
+        ],
         iconName: "Bot",
+        whatsappMessage: "¡Hola! Me interesa un Agente de IA para reservas y atención turística en Mompox.",
+        variant: "glow-brand",
       },
       {
-        title: "Automatización de Ventas para Filigrana & Artesanías",
+        tag: "Cobros & Despachos",
+        title: "Automatización de Procesos",
         description:
-          "Asistente virtual que muestra catálogo de piezas, toma pedidos, calcula envíos nacionales y verifica transferencias bancarias automáticamente.",
-        iconName: "Zap",
+          "Flujos automáticos que conectan tu WhatsApp con tus cuentas y pasarelas: validación de transferencias (Nequi, Daviplata, PSE), confirmaciones instantáneas y logística de envíos nacionales.",
+        highlights: [
+          "Validación automática de comprobantes de pago",
+          "Emisión de confirmaciones y vouchers digitales",
+          "Coordinación de despachos de filigrana y artesanías",
+        ],
+        iconName: "ArrowLeftRight",
+        whatsappMessage: "¡Hola! Quiero automatizar la recepción de pagos y reservas en Mompox.",
+        variant: "default",
       },
       {
-        title: "Menús Inteligentes & Pedidos Automáticos para Restaurantes",
+        tag: "Gestión Local",
+        title: "Software a Medida",
         description:
-          "Recepción de pedidos sin esperas, reservas de mesas y recomendaciones gastronómicas con IA para visitantes y turistas.",
-        iconName: "Database",
+          "Sistemas administrativos, comandas digitales para restaurantes, control de inventario de piezas de filigrana y reportes de caja pensados para operar con fluidez en la región.",
+        highlights: [
+          "Control de inventario, piezas y pedidos en tiempo real",
+          "Comandas y mesas para restaurantes coloniales",
+          "Respaldos automáticos en la nube y funcionamiento ágil",
+        ],
+        iconName: "Code2",
+        whatsappMessage: "¡Hola! Deseo cotizar un software a la medida para mi negocio en Mompox.",
+        variant: "default",
       },
       {
-        title: "Software de Gestión & Trazabilidad Local",
+        tag: "Vitrina Global",
+        title: "Páginas Web & E-commerce",
         description:
-          "Sistemas administrativos y de inventarios adaptados a tu negocio para controlar caja, proveedores y stock sin depender de procesos en papel.",
-        iconName: "Code",
+          "Páginas web corporativas para hoteles y tiendas virtuales para joyerías momposinas con pasarelas de pago y posicionamiento SEO para vender todo el año a nivel nacional.",
+        highlights: [
+          "Venta de filigrana a Bogotá, Medellín y el exterior",
+          "Motor de reservas directas sin intermediarios",
+          "SEO en Google para captar turistas antes de su viaje",
+        ],
+        iconName: "GlobeIcon",
+        whatsappMessage: "¡Hola! Quiero cotizar una página web / tienda online para mi negocio en Mompox.",
+        variant: "default",
       },
     ],
-    useCases: [
-      {
-        industry: "Hoteles Patrimoniales y Alojamientos Turísticos",
-        challenge: "Consultas nocturnas y de madrugada de turistas que se quedaban sin respuesta, perdiendo reservas ante plataformas de terceros.",
-        solution: "Agente de IA autónomo en WhatsApp que atiende en español e inglés, envía fotos, cotiza tarifas y cierra la reserva con enlace de pago.",
-        result: "Aumento del 40% en reservas directas y cero clientes perdidos por falta de respuesta oportuna.",
-      },
-      {
-        industry: "Talleres de Orfebrería y Filigrana Momposina",
-        challenge: "Ventas estancadas únicamente a temporadas altas cuando llegan turistas a la tienda física.",
-        solution: "Asistente de IA en WhatsApp que reactiva compradores de otras ciudades, envía catálogos y procesa pagos para despachos nacionales.",
-        result: "Ventas constantes durante todo el año, incluso en los meses de baja afluencia turística.",
-      },
-      {
-        industry: "Operadores Turísticos y Paseos en Lancha por el Río",
-        challenge: "Desorden tomando reservas manuales en papel y llamadas perdidas durante los recorridos turísticos.",
-        solution: "Asistente automatizado que agenda salidas, verifica cupos disponibles y envía confirmación con ubicación del muelle.",
-        result: "Llenado organizado de lanchas y 80% de ahorro de tiempo en gestión de llamadas.",
-      },
-    ],
+    useCases: [],
     faqs: [
       {
         question: "¿Cómo beneficia un agente de IA a un hotel o negocio turístico en Mompox?",
@@ -420,57 +464,70 @@ export const cities: CityConfig[] = [
         "¡Hola! Me encuentro en Aguachica, Cesar y deseo cotizar un software a medida / página web para mi negocio.",
     },
     industryFocus: {
-      badge: "Centro Comercial del Sur del Cesar",
-      title: "Tecnología para Negocios Comerciales, Agropecuarios y de Transporte",
+      badge: "Agroindustria & Comercio Regional",
+      title: "Tecnología y Software para Empresas en Aguachica",
       description:
-        "Aguachica es el corazón comercial y logístico del Sur del Cesar. Te ayudamos a modernizar tus puntos de venta, inventarios, despachos y presencia digital para liderar en la región.",
+        "Soluciones para puntos de venta, inventarios comerciales, agroindustria, transporte y distribución en el Sur del Cesar.",
     },
     services: [
       {
-        title: "Sistemas de Facturación, Inventarios & POS",
+        tag: "Ventas & Pedidos por Chat",
+        title: "Integraciones con IA",
         description:
-          "Software adaptado a la normatividad colombiana (DIAN) con control de stock en múltiples bodegas y arqueos de caja rápidos.",
-        iconName: "Database",
-      },
-      {
-        title: "Páginas Web Comerciales & Catálogos Virtuales",
-        description:
-          "Sitios web enfocados en captar clientes mayoristas y minoristas en el Cesar, Santander y Bolívar.",
-        iconName: "Globe",
-      },
-      {
-        title: "Automatización de Pedidos y Cotizaciones",
-        description:
-          "Conexión de tu catálogo con WhatsApp para que tus asesores coticen y cierren pedidos en tiempo récord.",
+          "Asistentes de IA en WhatsApp que toman pedidos de clientes mayoristas y minoristas, consultan precios al instante y agilizan cotizaciones para tu equipo de ventas.",
+        highlights: [
+          "Recepción de pedidos por chat y notas de voz",
+          "Consulta rápida de precios e inventario disponible",
+          "Atención continua para clientes del Cesar y Santander",
+        ],
         iconName: "Bot",
+        whatsappMessage: "¡Hola! Quiero integrar un Agente de IA para atención y pedidos en Aguachica.",
+        variant: "glow-brand",
       },
       {
-        title: "Software a Medida para Agro & Transporte",
+        tag: "Agilidad Comercial",
+        title: "Automatización de Procesos",
         description:
-          "Sistemas personalizados para control de fletes, pesaje, acopio de cosecha y gestión de clientes.",
-        iconName: "Code",
+          "Conexión de pedidos de WhatsApp directamente con tu sistema de inventario y facturación, evitando errores de digitación y demoras en el despacho.",
+        highlights: [
+          "Generación automática de órdenes de despacho",
+          "Sincronización de inventario entre bodegas",
+          "Notificaciones de estado de pedidos a clientes",
+        ],
+        iconName: "ArrowLeftRight",
+        whatsappMessage: "¡Hola! Deseo automatizar los procesos de pedidos y facturación en Aguachica.",
+        variant: "default",
+      },
+      {
+        tag: "POS & Control de Stock",
+        title: "Software a Medida",
+        description:
+          "Sistemas de facturación, arqueos de caja, puntos de venta (POS) y control de bodegas para ferreterías, distribuidores de insumos agropecuarios y empresas de transporte.",
+        highlights: [
+          "Facturación rápida con lector de código de barras",
+          "Control multi-bodega y alertas de bajo inventario",
+          "Módulos para fletes, pesaje y despacho agrícola",
+        ],
+        iconName: "Code2",
+        whatsappMessage: "¡Hola! Me interesa cotizar un software POS / inventarios en Aguachica.",
+        variant: "default",
+      },
+      {
+        tag: "Expansión Regional",
+        title: "Páginas Web & E-commerce",
+        description:
+          "Catálogos digitales y sitios web comerciales optimizados en Google para captar clientes en Ocaña, Gamarra, San Alberto, Pelaya y toda la región.",
+        highlights: [
+          "Catálogo digital para clientes mayoristas",
+          "Posicionamiento en Google para el Sur del Cesar",
+          "Integración de pagos en línea (PSE, Nequi)",
+        ],
+        iconName: "GlobeIcon",
+        whatsappMessage: "¡Hola! Quiero cotizar una página web / catálogo digital en Aguachica.",
+        variant: "default",
       },
     ],
-    useCases: [
-      {
-        industry: "Distribuidoras de Insumos Agropecuarios y Ferreterías",
-        challenge: "Descuadres continuos de inventario y dificultad para consultar precios al instante ante el cliente.",
-        solution: "Software web de inventario en tiempo real con lector de código de barras y cotizador móvil para asesores.",
-        result: "Cero descuadres en bodega y agilidad del 70% en atención al mostrador.",
-      },
-      {
-        industry: "Empresas de Transporte de Carga y Pasajeros",
-        challenge: "Control manual en planillas de viajes, encomiendas y liquidación a conductores.",
-        solution: "Plataforma administrativa centralizada para emisión de guías de carga, seguimiento y reportes de caja.",
-        result: "Liquidación automática de viajes y trazabilidad total de paquetes.",
-      },
-      {
-        industry: "Comercios Minoristas y Mayoristas",
-        challenge: "Falta de visibilidad fuera de Aguachica y limitación de ventas solo a transeúntes locales.",
-        solution: "Catálogo digital optimizado en Google que capta clientes de Ocaña, Gamarra, San Alberto y La Gloria.",
-        result: "Apertura de nuevos canales de venta en municipios vecinos.",
-      },
-    ],
+    useCases: [],
     faqs: [
       {
         question: "¿El software funciona en computadores, tablets y celulares?",

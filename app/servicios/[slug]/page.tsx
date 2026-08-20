@@ -79,7 +79,7 @@ export default async function ServicePage({ params }: Props) {
             "@type": "ListItem",
             position: 2,
             name: "Servicios",
-            item: `${siteConfig.url}/servicios`,
+            item: `${siteConfig.url}/#servicios`,
           },
           {
             "@type": "ListItem",
