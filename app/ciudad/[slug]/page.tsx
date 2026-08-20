@@ -207,16 +207,6 @@ export default async function CityLandingPage({ params }: Props) {
               <span className="font-semibold text-foreground">{city.name}</span>
             </nav>
 
-            {/* Badge */}
-            <div className="animate-appear inline-flex items-center gap-2 rounded-full border border-brand/30 bg-brand/10 px-3.5 py-1 text-xs font-semibold text-brand backdrop-blur-xs">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-75"></span>
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-brand"></span>
-              </span>
-              <MapPin className="size-3.5" />
-              {city.hero.badge}
-            </div>
-
             {/* H1 Heading */}
             <h1 className="animate-appear from-foreground to-foreground dark:to-muted-foreground relative z-10 inline-block bg-linear-to-r bg-clip-text text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-transparent drop-shadow-2xl text-left leading-[1.12]">
               {city.hero.title}{" "}

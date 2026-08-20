@@ -58,13 +58,13 @@ export function ProjectModalProvider({ children }: { children: React.ReactNode }
       {children}
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent className="max-w-2xl sm:max-w-3xl w-[94vw] p-0 bg-transparent border-0 outline-none shadow-none overflow-hidden">
-          <DialogTitle className="sr-only">Calificador de leads</DialogTitle>
+          <DialogTitle className="sr-only">Hablemos de tu proyecto</DialogTitle>
           <iframe
             data-dapta-forms
-            src="https://forms.dapta.ai/ve9que/alternative/calificador-de-leads?embed=1"
-            title="Calificador de leads"
+            src="https://forms.dapta.ai/h4e47d/alternative/hablemos-de-tu-proyecto?embed=1"
+            title="Hablemos de tu proyecto"
             loading="lazy"
-            style={{ width: "100%", border: 0, minHeight: "500px" }}
+            style={{ width: "100%", border: 0, minHeight: "480px" }}
           />
         </DialogContent>
       </Dialog>
