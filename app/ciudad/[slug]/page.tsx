@@ -338,13 +338,6 @@ export default async function CityLandingPage({ params }: Props) {
                     )}
                   />
                   <div className="flex flex-col gap-4 relative z-10">
-                    {/* Tag / Category Badge */}
-                    <div className="flex items-center justify-between">
-                      <span className="inline-flex items-center gap-1 rounded-md border border-brand/30 bg-brand/10 px-2.5 py-0.5 text-[11px] font-semibold text-brand tracking-wide">
-                        {item.tag}
-                      </span>
-                    </div>
-
                     {/* Icon & Title */}
                     <div className="flex items-center gap-3">
                       <div className="flex size-10 items-center justify-center rounded-xl bg-foreground/5 border border-foreground/10 text-foreground shrink-0 group-hover:scale-105 transition-transform">
