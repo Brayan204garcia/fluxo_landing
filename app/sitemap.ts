@@ -1,10 +1,12 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/config/site";
 import { getAllServiceSlugs } from "@/config/services";
+import { getAllCitySlugs } from "@/config/cities";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.url;
   const serviceSlugs = getAllServiceSlugs();
+  const citySlugs = getAllCitySlugs();
 
   return [
     {
@@ -25,6 +27,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.8,
     })),
+    ...citySlugs.map((slug) => ({
+      url: `${baseUrl}/ciudad/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+    })),
     {
       url: `${baseUrl}/llms.txt`,
       lastModified: new Date(),
@@ -39,4 +47,3 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 }
-

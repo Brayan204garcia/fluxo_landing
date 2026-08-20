@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Fluxo AI | Automatización de Procesos con IA & Software en Barrancabermeja",
   shortName: "Fluxo AI",
-  url: "https://bryansoftware.com",
+  url: "https://fluxoai.lat",
   getStartedUrl: "#contacto",
   ogImage: "/hero_inicio.png",
   description:

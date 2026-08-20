@@ -52,6 +52,15 @@ export default function FooterSection({
       ],
     },
     {
+      title: "Ciudades",
+      links: [
+        { text: "Barrancabermeja", href: "/ciudad/barrancabermeja" },
+        { text: "Bucaramanga", href: "/ciudad/bucaramanga" },
+        { text: "Mompox (Bolívar)", href: "/ciudad/mompox-bolivar" },
+        { text: "Aguachica (Cesar)", href: "/ciudad/aguachica" },
+      ],
+    },
+    {
       title: "Contacto Directo",
       links: [
         { text: "WhatsApp", href: siteConfig.links.whatsapp },
